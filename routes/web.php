@@ -1,32 +1,37 @@
 <?php
 
-use App\Http\Controllers\UserAuthController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProductController;
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Home\ProductController;
 use Illuminate\Support\Facades\Route;
 
+Route::group(
+    ['namespace' => 'Home', 'as' => 'home.'],
+    function(){
+        Route::get('/', [ProductController::class, 'homePage'])->name('home');
+    }
+);
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::group(
+    ['namespace' => 'Auth', 'as' => 'auth.'],
+    function (){
+        Route::get('login', [LoginController::class, 'login'])->name('login');
+        Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+    }
+);
 
-Route::get('/', [HomeController::class, 'allProducts']);
-Route::get('profil', [UserAuthController::class, 'profile']);
-Route::get('edit', [UserAuthController::class, 'EditProfile']);
-Route::any('login', [UserAuthController::class, 'login']);
-Route::any('logout', [UserAuthController::class, 'logout']);
-Route::get('product_detail', [ProductController::class, 'productDetail']);
-Route::get('checkout', [OrderController::class, 'checkout']);
-Route::get('Cart', [OrderController::class, 'cart']);
-Route::get('Checkout', [OrderController::class, 'checkout']);
+Route::group(
+    ['namespace' => 'Customer', 'as' => 'customer.', 'middleware' => 'auth', 'prefix' => 'my'],
+    function (){
+
+    }
+);
+
+//Route::get('profil', [UserAuthController::class, 'profile']);
+//Route::get('edit', [UserAuthController::class, 'EditProfile']);
+//Route::get('product_detail', [ProductController::class, 'productDetail']);
+//Route::get('checkout', [OrderController::class, 'checkout']);
+//Route::get('Cart', [OrderController::class, 'cart']);
+//Route::get('Checkout', [OrderController::class, 'checkout']);
 
 
