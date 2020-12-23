@@ -41,14 +41,16 @@ class LoginController extends Controller
         }
 
         $client = new Client();
-        $response = $client->get((new OwlixApi())->login(), [
-            'email' => $request->email,
-            'password' => $request->password
+        $response = $client->post((new OwlixApi())->login(), [
+            'form_params' => [
+                'email' => $request->email,
+                'password' => $request->password
+            ]
         ])->getBody();
         $content = json_decode($response, true);
 
         if ($content['status'] == 'success'){
-            $this->updateToken($content['data']['token'], $request->email, $content['data']['detail']['name']);
+            $this->updateToken($content['data']['token'], $request->email, "");
 
             return redirect()->route('home.home');
         } else if ($content['status'] == 'failed') {

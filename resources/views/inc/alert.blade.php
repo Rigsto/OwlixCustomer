@@ -1,9 +1,9 @@
 @if(session('Success'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div class="alert alert-success fade show" role="alert">
         {{session('Success')}}
     </div>
 @elseif(session('Error'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <div class="alert alert-danger fade show" role="alert">
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -11,7 +11,7 @@
         </ul>
     </div>
 @elseif(session('Fail'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <div class="alert alert-danger fade show" role="alert">
         {{session('Fail')}}
     </div>
 @endif

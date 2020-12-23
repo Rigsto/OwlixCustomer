@@ -22,6 +22,6 @@ class ProductController extends Controller
     }
 
     public function detail($id){
-
+        return view('product.detail');
     }
 }

@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class StoreController extends Controller
 {
     public function detail($id){
-
+        return view('store.detail');
     }
 }

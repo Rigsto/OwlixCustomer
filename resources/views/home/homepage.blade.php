@@ -39,7 +39,7 @@
                     <div class="row product-grid py-sm-4">
                         @foreach($datas as $data)
                             <div class="col-4 px-3 py-3">
-                                <a href="">
+                                <a href="{{ route('home.item.detail', ['id' => $data['id']]) }}">
                                     <div class="card">
                                         <img class="card-img-top" style="height: 12rem;"
                                              src="{{$data['store_item_images'][0]['image_url']}}"
