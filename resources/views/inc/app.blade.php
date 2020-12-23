@@ -28,6 +28,7 @@
         <div id="content">
             @include('inc.topnav')
             @yield('content')
+            @include('inc.footer')
         </div>
     </div>
 </div>

@@ -4,6 +4,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Customer\OrderController;
 use App\Http\Controllers\Customer\ProfileController;
+use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\ProductController;
 use App\Http\Controllers\Home\StoreController;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +17,10 @@ Route::group(
         Route::get('item/{id}/detail', [ProductController::class, 'detail'])->name('item.detail');
 
         Route::get('store/{id}/detail', [StoreController::class, 'detail'])->name('store.detail');
+
+        Route::get('tentang', [HomeController::class, 'about'])->name('about');
+        Route::get('kebijakanpengguna', [HomeController::class, 'privacy'])->name('privacy');
+        Route::get('syaratketentuan', [HomeController::class, 'terms'])->name('terms');
     }
 );
 
