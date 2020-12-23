@@ -36,7 +36,7 @@
                         <h2>Terlaris</h2>
                         <a href="">Lihat Semua</a>
                     </div>
-                    <div class="row product-grid justify-content-between py-sm-4">
+                    <div class="row product-grid py-sm-4">
                         @foreach($datas as $data)
                             <div class="col-4 px-3 py-3">
                                 <a href="">
