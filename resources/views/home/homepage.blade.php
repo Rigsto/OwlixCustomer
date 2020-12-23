@@ -70,4 +70,6 @@
             </div>
         </div>
     </div>
+    @include('inc.bottomnav')
+    @include('inc.footer')
 @endsection

@@ -28,7 +28,6 @@
         <div id="content">
             @include('inc.topnav')
             @yield('content')
-            @include('inc.bottomnav')
         </div>
     </div>
 </div>

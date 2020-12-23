@@ -20,4 +20,8 @@ class ProductController extends Controller
             'categories' => []
         ]);
     }
+
+    public function detail($id){
+
+    }
 }
