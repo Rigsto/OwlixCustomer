@@ -86,7 +86,7 @@
                 </p>
             </div>
             <div class="d-flex align-items-center mt-5">
-                <div class="profilePicture" style="width: 100px; height: 100px; background-image: url(''); background-size: contain; border-radius: 40px"></div>
+                <div class="profilePicture" style="width: 100px; height: 100px; background-image: url('{{ asset("img/accountlogo.png") }}'); background-size: contain; border-radius: 40px"></div>
                 <div class="ml-4">
                     <h3>Nama Toko</h3>
                     <a href="{{ route('home.store.detail', ['id' => 0]) }}" class="btn btn-light px-3 py-2">
