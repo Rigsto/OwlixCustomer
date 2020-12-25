@@ -7,6 +7,9 @@ use App\Http\Controllers\Customer\ProfileController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\ProductController;
 use App\Http\Controllers\Home\StoreController;
+use App\Http\Controllers\Order\CartController;
+use App\Http\Controllers\Order\CheckOutController;
+use App\Http\Controllers\Order\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(
@@ -21,6 +24,19 @@ Route::group(
         Route::get('tentang', [HomeController::class, 'about'])->name('about');
         Route::get('kebijakanpengguna', [HomeController::class, 'privacy'])->name('privacy');
         Route::get('syaratketentuan', [HomeController::class, 'terms'])->name('terms');
+    }
+);
+
+Route::group(
+    ['namespace' => 'Order', 'as' => 'order.', 'middleware' => 'auth'],
+    function (){
+        Route::get('cart', [CartController::class, 'index'])->name('cart');
+        Route::post('item/{id}/add', [CartController::class, 'addToCart'])->name('cart.add');
+        Route::post('item/{id}/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
+
+        Route::get('checkout', [CheckOutController::class, 'index'])->name('checkout');
+
+        Route::get('payment', [PaymentController::class, 'index'])->name('payment');
     }
 );
 
@@ -41,16 +57,7 @@ Route::group(
 
         Route::get('orders', [OrderController::class, 'index'])->name('order');
 
-        Route::post('item/{id}/add', [OrderController::class, 'addToCart'])->name('cart.add');
-        Route::post('item/{id}/remove', [OrderController::class, 'removeFromCart'])->name('cart.remove');
-
-        Route::get('cart', [OrderController::class, 'cart'])->name('cart');
-        Route::get('checkout', [OrderController::class, 'checkout'])->name('checkout');
     }
 );
-
-//Route::get('checkout', [OrderController::class, 'checkout']);
-//Route::get('Cart', [OrderController::class, 'cart']);
-//Route::get('Checkout', [OrderController::class, 'checkout']);
 
 
