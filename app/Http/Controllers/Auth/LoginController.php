@@ -100,6 +100,6 @@ class LoginController extends Controller
 
             Auth::logout();
         }
-        return redirect()->route('auth.showLogin');
+        return redirect()->route('home.home');
     }
 }

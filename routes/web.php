@@ -49,9 +49,6 @@ Route::group(
     }
 );
 
-//Route::get('profil', [UserAuthController::class, 'profile']);
-//Route::get('edit', [UserAuthController::class, 'EditProfile']);
-//Route::get('product_detail', [ProductController::class, 'productDetail']);
 //Route::get('checkout', [OrderController::class, 'checkout']);
 //Route::get('Cart', [OrderController::class, 'cart']);
 //Route::get('Checkout', [OrderController::class, 'checkout']);

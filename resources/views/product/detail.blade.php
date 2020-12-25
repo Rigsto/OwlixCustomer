@@ -1,5 +1,6 @@
 @extends('inc.app')
 @section('content')
+    @include('inc.categorynav')
     <div class="container">
         <div class="card my-5 px-5 py-5">
             <div class="row justify-content-md-center">
@@ -132,4 +133,12 @@
                 </div>
             </div>
         </div>
+@endsection
+@section('scripts')
+    <script src="{{ asset('js/bootstrap-input-spinner.js') }}"></script>
+    <script>
+        $(document).ready(function (){
+            $('#quantity').inputSpinner();
+        });
+    </script>
 @endsection

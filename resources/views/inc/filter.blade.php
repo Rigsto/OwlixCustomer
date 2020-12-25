@@ -1,7 +1,7 @@
 <section>
     <div class="px-lg-5 px-sm-3 py-3 d-flex justify-content-between align-items-center"
          style="background-color: #F7F7F7;">
-        <div class="d-flex align-items-center " id="FilterDropdown">
+        <div class="d-flex align-items-center" id="FilterDropdown">
             <div class="text-muted">Filter Berdasarkan</div>
             <div class="d-flex">
                 <div class="btn-group ml-lg-3 ml-sm-3">
