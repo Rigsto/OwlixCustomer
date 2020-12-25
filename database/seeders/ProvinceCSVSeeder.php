@@ -2,27 +2,20 @@
 
 namespace Database\Seeders;
 
-use Flynsarmy\CsvSeeder\CsvSeeder;
-use Illuminate\Support\Facades\DB;
+use JeroenZwart\CsvSeeder\CsvSeeder;
 
 class ProvinceCSVSeeder extends CsvSeeder
 {
     public function __construct()
     {
-        $this->table = 'address_provinces';
-        $this->filename = base_path().'/database/seeders/csv/province.csv';
-        $this->offset_rows = 1;
-        $this->mapping = [
-            0 => 'id',
-            1 => 'name'
-        ];
+        $this->file = '/database/seeders/csv/province.csv';
+        $this->delimiter = ',';
+        $this->header = true;
+        $this->tablename = 'address_provinces';
     }
 
     public function run()
     {
-        DB::disableQueryLog();
-        DB::table($this->table)->truncate();
-
         parent::run();
     }
 }

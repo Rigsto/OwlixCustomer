@@ -19,29 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5f24f96-cc71-4201-a2fd-14b5281bcce2" name="Default Changelist" comment="profil dan store detail">
-      <change afterPath="$PROJECT_DIR$/app/Models/AddressCity.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/AddressProvince.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_25_062444_create_address_cities_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_25_062504_create_address_provinces_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/CityCSVSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/ProvinceCSVSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/csv/city.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/csv/province.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/bootstrap-input-spinner.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/inc/categorynav.blade.php" afterDir="false" />
+    <list default="true" id="c5f24f96-cc71-4201-a2fd-14b5281bcce2" name="Default Changelist" comment="category view, province and city local data">
       <change beforePath="$PROJECT_DIR$/.idea/OwlixCustomer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OwlixCustomer.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/from/Toko.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/from/index.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inc/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inc/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inc/filter.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inc/filter.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/product/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product/detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/CityCSVSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/CityCSVSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/ProvinceCSVSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/ProvinceCSVSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/csv/city.csv" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/csv/city.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/csv/province.csv" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/csv/province.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +162,7 @@
       <path value="$PROJECT_DIR$/vendor/psr/http-client" />
       <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
-      <path value="$PROJECT_DIR$/vendor/flynsarmy/csv-seeder" />
+      <path value="$PROJECT_DIR$/vendor/jeroenzwart/laravel-csv-seeder" />
     </include_path>
   </component>
   <component name="ProjectId" id="1m3MihdiyICWyfwYbCbGiJCrocY" />
@@ -231,7 +219,7 @@
       <updated>1608717949873</updated>
       <workItem from="1608717951025" duration="12587000" />
       <workItem from="1608842112908" duration="5860000" />
-      <workItem from="1608876362155" duration="2873000" />
+      <workItem from="1608876362155" duration="6355000" />
     </task>
     <task id="LOCAL-00001" summary="login view done">
       <created>1608742477906</created>
@@ -275,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608770897172</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="category view, province and city local data">
+      <created>1608881262826</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1608881262826</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,7 +296,8 @@
     <MESSAGE value="plugin update" />
     <MESSAGE value="detail product view done" />
     <MESSAGE value="profil dan store detail" />
-    <option name="LAST_COMMIT_MESSAGE" value="profil dan store detail" />
+    <MESSAGE value="category view, province and city local data" />
+    <option name="LAST_COMMIT_MESSAGE" value="category view, province and city local data" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1608740397354">
@@ -332,10 +328,14 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="461" y="169" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1608842283667" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1608770899154">
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1608881264993">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1608770899154" />
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1608881264993" />
+    <state x="265" y="128" width="1422" height="691" key="editAsTableFormatDialogDimension" timestamp="1608908136608">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="265" y="128" width="1422" height="691" key="editAsTableFormatDialogDimension/0.0.1920.1050@0.0.1920.1050" timestamp="1608908136608" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1608761226291">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

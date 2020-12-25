@@ -1,4 +1,4 @@
-﻿"city_id","province_id","province","type","city_name","postal_code"
+﻿"id","province_id","%province","type","name","postal_code"
 "1","21","Nanggroe Aceh Darussalam (NAD)","Kabupaten","Aceh Barat","23681"
 "2","21","Nanggroe Aceh Darussalam (NAD)","Kabupaten","Aceh Barat Daya","23764"
 "3","21","Nanggroe Aceh Darussalam (NAD)","Kabupaten","Aceh Besar","23951"
