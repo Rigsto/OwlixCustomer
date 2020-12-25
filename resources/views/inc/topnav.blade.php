@@ -9,6 +9,7 @@
             </button>
         </form>
         <ul class="navbar-nav mt-2 mt-lg-0 align-items-center">
+            @if($order ?? true)
             <li class="nav-item active border-right pr-4">
                 <a class="nav-link d-flex" href="{{ route('order.cart') }}">
                     <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor"
@@ -25,6 +26,7 @@
                     @endif
                 </a>
             </li>
+            @endif
             <li class="nav-item ml-4">
                 @if (\Illuminate\Support\Facades\Auth::check())
                     <div class="btn-group dropdown">

@@ -50,7 +50,7 @@ class LoginController extends Controller
         $content = json_decode($response, true);
 
         if ($content['status'] == 'success'){
-            $this->updateToken($content['data']['token'], $request->email, "");
+            $this->updateToken($content['data']['token'], $request->email, $content['data']['user']['name']);
 
             return redirect()->route('home.home');
         } else if ($content['status'] == 'failed') {

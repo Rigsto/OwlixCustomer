@@ -28,4 +28,8 @@ class BaseHomeController extends Controller
             return [];
         }
     }
+
+    public function getCategoryName($categories, $id){
+        return $categories[$id-1]['name'];
+    }
 }

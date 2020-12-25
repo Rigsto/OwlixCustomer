@@ -9,14 +9,14 @@
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  
+
     <style>
         body{
             background-color: #FAFAFA;
         }
     </style>
 </head>
-<body >
+<body>
   <section style="background-color: white" class="pb-4">
       <div class="container">
         <nav class="navbar navbar-expand-sm navbar-light px-lg-5">
@@ -24,13 +24,13 @@
                 <a class="navbar-brand border-right pr-3" href="{{url('/')}}"><img src="assets/img/logo.svg" alt="logo"></a>
                 <h4 class="mb-0">Keranjang</h4>
             </div>
-           
+
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="scollapse navbar-collapse" id="collapsibleNavId">
-                
+
                 <ul class="navbar-nav mt-2 mt-lg-0 w-100 align-items-center justify-content-between">
                     <li class="nav-item ml-4 px-lg-3 w-100">
                         <form class="input-group md-form form-sm form-4  mt-2 search-bar">
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="background-color: transparent!important">
-                              
+
                             </button>
                             <div class="dropdown-menu dropdown-menu-lg-right">
                                 <button class="dropdown-item" type="button" onclick="window.location.href='{{ url('profil')}}'">Profil</button>
@@ -64,7 +64,7 @@
                           @endif
                     </li>
                 </ul>
-                
+
             </div>
         </nav>
         <div class="d-flex justify-content-center pt-4 align-items-center w-100">
@@ -121,7 +121,7 @@
                         </thead>
                         <tbody>
                         @foreach ($data['data'] as $order)
-                        @if ($order['id_customer'] == Session::get('user.data.id')) 
+                        @if ($order['id_customer'] == Session::get('user.data.id'))
                         @foreach ($order['order_items'] as $item)
                         <?php
                         $total = $total + ($item['quantity']*$item['store_item']['store_item_price']);
@@ -158,7 +158,7 @@
                         <a href="" class="mr-4 text-danger float-right" style="font-size: 16px;"><i class="fa fa-trash mr-2" aria-hidden="true"></i>Kosongkan Keranjang</a>
                       </div>
                    </div>
-              
+
                </div>
                <div class="col col-3 ">
                 <div class="card my-5 px-3 py-4 rounded-medium">
@@ -180,7 +180,7 @@
                               <input type="password" class="form-control w-100" id="inputPassword2" placeholder="Kode Promo">
                             </div>
                             <div class="mb-2 col-lg-4"><button type="submit" class="btn btn-primary w-100">Pakai</button></div>
-                            
+
                           </form>
                           <p class="text-primary">
                               20% Discount
@@ -201,11 +201,11 @@
                         </button>
                     </div>
                 </div>
-              
+
            </div>
         </div>
     </div>
-   
+
     <div class="container">
     </div>
 </section>

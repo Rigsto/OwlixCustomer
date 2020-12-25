@@ -64,12 +64,14 @@ class ProductController extends BaseHomeController
                 'items' => $content,
                 'categories' => $categories,
                 'is_home' => $home,
-                'title' => $categories[$cat-1]['name']
+                'title' => $this->getCategoryName($categories, $cat)
             ]);
         }
     }
 
     public function detail($id){
+        
+
         return view('product.detail');
     }
 }
