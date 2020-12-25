@@ -9,8 +9,11 @@
                         Kategori Produk
                     </div>
                     <ul class="list-group list-group-flush">
+                        <a href="{{ route('home.search.category', ['cat' => 0]) }}" class="py-1">
+                            <li class="list-group-item border-bottom">Semua Produk</li>
+                        </a>
                         @foreach($categories as $cat)
-                            <a href="" class="py-1">
+                            <a href="{{ route('home.search.category', ['cat' => $cat['id']]) }}" class="py-1">
                                 <li class="list-group-item border-bottom">{{ $cat['name'] }}</li>
                             </a>
                         @endforeach
@@ -18,31 +21,33 @@
                 </div>
             </div>
             <div class="col-md-9">
-                <div class="d-flex">
-                    <div class="ml-sm-3">
-                        <a href="" class="kategori-btn">
-                            <img src="{{ asset('img/KebutuhanRT.svg') }}" alt="" class="rounded-images mw-100">
-                        </a>
-                        <a href="" class="kategori-btn">
-                            <img src="{{ asset('img/Pakaian.svg') }}" alt="" class="rounded-images mw-100">
-                        </a>
-                        <a href="" class="kategori-btn">
-                            <img src="{{ asset('img/KebutuhanSekolah.svg') }}" alt="" class="rounded-images mw-100">
-                        </a>
+                @if($is_home)
+                    <div class="d-flex" style="padding-bottom: 2em">
+                        <div class="ml-sm-3">
+                            <a href="" class="kategori-btn">
+                                <img src="{{ asset('img/KebutuhanRT.svg') }}" alt="" class="rounded-images mw-100">
+                            </a>
+                            <a href="" class="kategori-btn">
+                                <img src="{{ asset('img/Pakaian.svg') }}" alt="" class="rounded-images mw-100">
+                            </a>
+                            <a href="" class="kategori-btn">
+                                <img src="{{ asset('img/KebutuhanSekolah.svg') }}" alt="" class="rounded-images mw-100">
+                            </a>
+                        </div>
                     </div>
-                </div>
+                @endif
                 <div class="product-list-header px-sm-3">
                     <div class="d-flex justify-content-between align-items center">
-                        <h2>Terlaris</h2>
+                        <h2>{{ $title }}</h2>
                         <a href="">Lihat Semua</a>
                     </div>
                     <div class="row product-grid py-sm-4">
-                        @foreach($datas as $data)
+                        @foreach($items as $data)
                             <div class="col-4 px-3 py-3">
                                 <a href="{{ route('home.item.detail', ['id' => $data['id']]) }}">
                                     <div class="card">
                                         <img class="card-img-top" style="height: 12rem;"
-                                             src="{{$data['store_item_images'][0]['image_url']}}"
+{{--                                             src="{{$data['store_item_images'][0]['image_url']}}"--}}
                                              alt="Card image cap">
                                         <div class="card-body">
                                             <p class="card-text text-muted" style="font-size: 12px;">{{$data['store']['name']}}</p>
@@ -70,5 +75,7 @@
             </div>
         </div>
     </div>
-    @include('inc.bottomnav')
+    @if($is_home)
+        @include('inc.bottomnav')
+    @endif
 @endsection

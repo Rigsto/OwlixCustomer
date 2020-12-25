@@ -10,7 +10,7 @@
         </form>
         <ul class="navbar-nav mt-2 mt-lg-0 align-items-center">
             <li class="nav-item active border-right pr-4">
-                <a class="nav-link d-flex" href="{{ route('customer.cart') }}">
+                <a class="nav-link d-flex" href="{{ route('order.cart') }}">
                     <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor"
                          xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"

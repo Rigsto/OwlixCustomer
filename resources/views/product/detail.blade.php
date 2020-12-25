@@ -1,6 +1,6 @@
 @extends('inc.app')
 @section('content')
-    @include('inc.categorynav')
+    @include('inc.category_topnav')
     <div class="container">
         <div class="card my-5 px-5 py-5">
             <div class="row justify-content-md-center">

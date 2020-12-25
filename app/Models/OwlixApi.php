@@ -40,7 +40,7 @@ class OwlixApi
     //--------------------------------------------------------------------------
     //store item
     public function read_store_item(){
-        return $this->base_url."read_store_item";
+        return $this->base_url."customer_read_store_item";
     }
 
     public function read_all_store_item(){
@@ -111,5 +111,25 @@ class OwlixApi
     //voucher
     public function read_voucher(){
         return $this->base_url."read_voucher";
+    }
+
+    //--------------------------------------------------------------------------
+    //item category
+    public function get_all_categories(){
+        return $this->base_url."get_all_item_categories";
+    }
+
+    //--------------------------------------------------------------------------
+    //wishlist
+    public function create_wishlist(){
+        return $this->base_url."create_wishlist";
+    }
+
+    public function get_wishlist(){
+        return $this->base_url."read_wishlist";
+    }
+
+    public function delete_wishlist(){
+        return $this->base_url."delete_wishlist";
     }
 }
