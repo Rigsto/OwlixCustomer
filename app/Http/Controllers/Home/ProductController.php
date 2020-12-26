@@ -70,8 +70,20 @@ class ProductController extends BaseHomeController
     }
 
     public function detail($id){
-        
+        $client = new Client();
+        $response = $client->get((new OwlixApi())->read_store_item(), [
+            'query' => [
+                'id_store_item' => $id
+            ]
+        ])->getBody();
+        $content = json_decode($response, true);
 
-        return view('product.detail');
+        $categories = $this->readAllCategories();
+
+        return view('product.detail', [
+            'data' => $content['data'],
+            'category_id' => $content['data']['id_item_category'],
+            'category_name' => $this->getCategoryName($categories, $content['data']['id_item_category']),
+        ]);
     }
 }

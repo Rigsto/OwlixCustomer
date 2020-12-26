@@ -5,7 +5,7 @@
             <p class="mb-0 px-2"> / </p>
             <a href="{{ route('home.search.category', $category_id) }}">{{ $category_name }}</a>
             <p class="mb-0 px-2"> / </p>
-            <p>{{ $product_name }}</p>
+            <p class="mb-0">{{ $data['name'] }}</p>
         </div>
     </div>
 </section>

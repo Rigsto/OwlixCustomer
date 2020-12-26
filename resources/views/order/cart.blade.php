@@ -55,7 +55,6 @@
                         <a href="" class="mr-4 text-danger float-right" style="font-size: 16px;"><i class="fa fa-trash mr-2" aria-hidden="true"></i>Kosongkan Keranjang</a>
                     </div>
                 </div>
-
             </div>
             <div class="col col-3 ">
                 <div class="card my-5 px-3 py-4 rounded-medium">

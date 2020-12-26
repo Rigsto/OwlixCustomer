@@ -18,11 +18,7 @@ class BaseHomeController extends Controller
         $client = new Client();
 
         try {
-            $response = $client->get((new OwlixApi())->get_all_categories(), [
-                'headers' => [
-                    'Authorization' => 'Bearer '.$this->dummy
-                ]
-            ])->getBody();
+            $response = $client->get((new OwlixApi())->get_all_categories())->getBody();
             return json_decode($response, true)['data'];
         } catch (GuzzleException $exception){
             return [];

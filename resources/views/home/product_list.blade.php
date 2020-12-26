@@ -47,18 +47,13 @@
                                 <a href="{{ route('home.item.detail', ['id' => $data['id']]) }}">
                                     <div class="card">
                                         <img class="card-img-top" style="height: 12rem;"
-{{--                                             src="{{$data['store_item_images'][0]['image_url']}}"--}}
+                                             src="{{$data['store_item_images'][0]['image_url']}}"
                                              alt="Card image cap">
                                         <div class="card-body">
                                             <p class="card-text text-muted" style="font-size: 12px;">{{$data['store']['name']}}</p>
                                             <h4 class="card-title">{{$data['name']}}</h4>
                                             <div class="product-rate-star">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="ml-2">4.3K</span>
+                                                @include('inc.star_rating', ['star_count'=>random_int(1, 5), 'rating_count'=>random_int(0, 10000)])
                                             </div>
                                             <div
                                                 class="product-price pt-4 d-flex justify-content-between align-items-end">

@@ -7,23 +7,43 @@
                 <div class="col col-lg-6 col-sm-12 mb-md-5">
                     <div class="row">
                         <div class="col-md-12">
-                            <div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
+                            <div id="custCarousel" class="carousel slide" data-ride="carousel">
                                 <!-- slides -->
                                 <div class="carousel-inner">
-                                    @for ($j = 0; $j < 5; $j++)
+                                    @for ($j = 0; $j < count($data['store_item_images']); $j++)
                                         @if ($j == 0)
-                                            <div class="carousel-item active"> <img src="https://production.owlix-id.com/store_files/store_item_images/1608492100_image0.jpg" alt="Hills"> </div>
+                                            <div class="carousel-item active">
+                                                <img src="{{ $data['store_item_images'][$j]['image_url'] }}" alt="{{ $data['name'] }} photo">
+                                            </div>
                                         @else
-                                            <div class="carousel-item"> <img src="https://production.owlix-id.com/store_files/store_item_images/1608492100_image0.jpg" alt="Hills"> </div>
+                                            <div class="carousel-item">
+                                                <img src="{{ $data['store_item_images'][$j]['image_url'] }}" alt="{{ $data['name'] }} photo">
+                                            </div>
                                         @endif
                                     @endfor
-                                </div> <!-- Left right --> <a class="carousel-control-prev" href="#custCarousel" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> <a class="carousel-control-next" href="#custCarousel" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> <!-- Thumbnails -->
+                                </div>
+                                <!-- Left right -->
+                                <a class="carousel-control-prev" href="#custCarousel" data-slide="prev">
+                                    <span class="carousel-control-prev-icon"></span>
+                                </a>
+                                <a class="carousel-control-next" href="#custCarousel" data-slide="next">
+                                    <span class="carousel-control-next-icon"></span>
+                                </a>
+                                <!-- Thumbnails -->
                                 <ol class="carousel-indicators list-inline">
-                                    @for ($j = 0; $j < 5; $j++)
+                                    @for ($j = 0; $j < count($data['store_item_images']); $j++)
                                         @if ($j == 0)
-                                            <li class="list-inline-item active"> <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#custCarousel"> <img src="https://production.owlix-id.com/store_files/store_item_images/1608492100_image0.jpg" class="img-fluid"> </a> </li>
+                                            <li class="list-inline-item active">
+                                                <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#custCarousel">
+                                                    <img src="{{ $data['store_item_images'][$j]['image_url'] }}" class="img-fluid" alt="{{ $data['name'] }} thumbnail">
+                                                </a>
+                                            </li>
                                         @else
-                                            <li class="list-inline-item"> <a id="carousel-selector-1" data-slide-to="1" data-target="#custCarousel"> <img src="https://production.owlix-id.com/store_files/store_item_images/1608492100_image0.jpg" class="img-fluid"> </a> </li>
+                                            <li class="list-inline-item">
+                                                <a id="carousel-selector-1" data-slide-to="1" data-target="#custCarousel">
+                                                    <img src="{{ $data['store_item_images'][$j]['image_url'] }}" class="img-fluid" alt="{{ $data['name'] }} thumbnail">
+                                                </a>
+                                            </li>
                                         @endif
                                     @endfor
                                 </ol>
@@ -33,30 +53,25 @@
                 </div>
                 <div class="col col-lg-6 col-sm-12 mt-md-5 mt-lg-0">
                     <div class="product-name">
-                        <h1>Product Name</h1>
+                        <h1>{{ $data['name'] }}</h1>
                     </div>
                     <div class="d-flex align-items-center">
                         <div class="product-rate-star">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="ml-4 text-muted">4.3K</span>
+                            @include('inc.star_rating', ['star_count'=>random_int(1, 5), 'rating_count'=>random_int(0, 10000)])
                         </div>
                         <div class="border-right ml-md-4 pr-4">
                             <a href="#">Lihat Semua</a>
                         </div>
                         <div class="d-flex align-items-center">
                             <i class="fa fa-check-circle" style="color:#263A81;" aria-hidden="true"></i>
-                            <span class="text-muted ml-1">10K Orders</span>
+                            <span class="text-muted ml-1">{{ $data['sold'] }} Orders</span>
                         </div>
 
                     </div>
                     <div class="align-items-center justify-content-between mt-5" style="display: flex;">
                         <div class="priceInfo">
-                            <h2>Rp {{ number_format(1000000, 0, ',', '.') }}</h2>
-                            <del class="text-muted">Rp 125.000</del>
+                            <h2>Rp {{ number_format($data['store_item_price'], 0, ',', '.') }}</h2>
+{{--                            <del class="text-muted">Rp 125.000</del>--}}
                         </div>
                         <div> <a><i class="fa fa-heart-o" style="font-size: 32px;" aria-hidden="false"></i></a></div>
 
@@ -68,7 +83,6 @@
                         </div>
 
                     </div>
-
                     <div class="d-flex align-items-center mt-4">
                         <button class="btn-primary rounded px-4 py-2 mr-md-4">Beli Sekarang</button>
                         <button class="btn-secondary rounded px-4 py-2 mr-md-4">Tambahkan ke Keranjang</button>
@@ -83,14 +97,14 @@
             <div>
                 <h3 class="mb-4">Deskripsi Produk</h3>
                 <p class="text-muted">
-                    Deskripsi Produk disini
+                    {{ $data['store_item_description'] }}
                 </p>
             </div>
             <div class="d-flex align-items-center mt-5">
-                <div class="profilePicture" style="width: 100px; height: 100px; background-image: url('{{ asset("img/accountlogo.png") }}'); background-size: contain; border-radius: 40px"></div>
+                <div class="profilePicture" style="width: 100px; height: 100px; background-image: url('{{ $data['store']['image_url'] }}'); background-size: contain; border-radius: 40px"></div>
                 <div class="ml-4">
-                    <h3>Nama Toko</h3>
-                    <a href="{{ route('home.store.detail', ['id' => 0]) }}" class="btn btn-light px-3 py-2">
+                    <h3>{{ $data['store']['name'] }}</h3>
+                    <a href="{{ route('home.store.detail', ['id' => $data['store']['id']]) }}" class="btn btn-light px-3 py-2">
                         <i class="fas fa-store mr-2"></i>
                         Kunjungi Toko
                     </a>
