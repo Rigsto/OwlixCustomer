@@ -33,9 +33,9 @@ Route::group(
 Route::group(
     ['namespace' => 'Order', 'as' => 'order.', 'middleware' => 'auth'],
     function (){
+        Route::post('buy', [CartController::class, 'buy'])->name('buy');
+
         Route::get('cart', [CartController::class, 'index'])->name('cart');
-        Route::post('item/{id}/add', [CartController::class, 'addToCart'])->name('cart.add');
-        Route::post('item/{id}/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
 
         Route::get('checkout', [CheckOutController::class, 'index'])->name('checkout');
 

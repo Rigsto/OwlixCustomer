@@ -76,17 +76,20 @@
                         <div> <a><i class="fa fa-heart-o" style="font-size: 32px;" aria-hidden="false"></i></a></div>
 
                     </div>
-                    <div class="d-flex align-items-center mt-5">
-                        <div class="text-muted">Kuantitas</div>
-                        <div class="d-flex ml-sm-3">
-                            <input type="number" min="0" max="100" step="1" class="form-control" id="quantity"/>
+                    <form action="{{ route('order.buy') }}">
+                        @include('inc.alert')
+                        {!! Form::hidden('id_store_item', $data['id']) !!}
+                        <div class="d-flex align-items-center mt-5">
+                            <div class="text-muted">Kuantitas</div>
+                            <div class="d-flex ml-sm-3">
+                                {!! Form::number('quantity', 1, ['class'=>'form-control', 'id'=>'quantity', 'min'=>1, 'max'=>100, 'step'=>1]) !!}
+                            </div>
                         </div>
-
-                    </div>
-                    <div class="d-flex align-items-center mt-4">
-                        <button class="btn-primary rounded px-4 py-2 mr-md-4">Beli Sekarang</button>
-                        <button class="btn-secondary rounded px-4 py-2 mr-md-4">Tambahkan ke Keranjang</button>
-                    </div>
+                        <div class="d-flex align-items-center mt-4">
+                            <button class="btn-primary rounded px-4 py-2 mr-md-4" type="submit" value="buynow" name="submit">Beli Sekarang</button>
+                            <button class="btn-secondary rounded px-4 py-2 mr-md-4" type="submit" value="cart" name="submit">Tambahkan ke Keranjang</button>
+                        </div>
+                    </form>
                 </div>
             </div>
 

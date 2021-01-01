@@ -19,18 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5f24f96-cc71-4201-a2fd-14b5281bcce2" name="Default Changelist" comment="cart design done, no data">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Base/BaseOrderController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/inc/star_rating.blade.php" afterDir="false" />
+    <list default="true" id="c5f24f96-cc71-4201-a2fd-14b5281bcce2" name="Default Changelist" comment="view detail with data done">
+      <change beforePath="$PROJECT_DIR$/.idea/OwlixCustomer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OwlixCustomer.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Base/BaseHomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Base/BaseHomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Home/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Home/ProductController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Order/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Order/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Order/CheckOutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Order/CheckOutController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home/product_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home/product_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inc/category_topnav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inc/category_topnav.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/order/cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/order/cart.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/product/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,6 +161,7 @@
       <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
       <path value="$PROJECT_DIR$/vendor/jeroenzwart/laravel-csv-seeder" />
+      <path value="$PROJECT_DIR$/vendor/laravelcollective/html" />
     </include_path>
   </component>
   <component name="ProjectId" id="1m3MihdiyICWyfwYbCbGiJCrocY" />
@@ -221,7 +219,7 @@
       <workItem from="1608717951025" duration="12587000" />
       <workItem from="1608842112908" duration="5860000" />
       <workItem from="1608876362155" duration="22704000" />
-      <workItem from="1608958561361" duration="7954000" />
+      <workItem from="1608958561361" duration="8944000" />
     </task>
     <task id="LOCAL-00001" summary="login view done">
       <created>1608742477906</created>
@@ -300,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608929321509</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="view detail with data done">
+      <created>1608971328879</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1608971328879</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,7 +336,8 @@
     <MESSAGE value="remake controller and web route" />
     <MESSAGE value="home view done, data bug" />
     <MESSAGE value="cart design done, no data" />
-    <option name="LAST_COMMIT_MESSAGE" value="cart design done, no data" />
+    <MESSAGE value="view detail with data done" />
+    <option name="LAST_COMMIT_MESSAGE" value="view detail with data done" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1608740397354">
