@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Order;
 
 use App\Http\Controllers\Base\BaseOrderController;
-use App\Http\Controllers\Controller;
+use App\Models\CartItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class CartController extends BaseOrderController
@@ -12,13 +13,16 @@ class CartController extends BaseOrderController
     public function index(){
         return view('order.cart', [
             'order' => false,
-            'order_process' => 1
+            'order_process' => 1,
+            'items' => $this->getAllItem()
         ]);
     }
 
     private function inputValidator(array $data){
         return Validator::make($data, [
-            'quantity' => ['numeric', 'min:1']
+            'quantity' => ['numeric', 'min:1', 'required'],
+            'id_store_item' => ['numeric', 'required'],
+            'name' => ['required']
         ]);
     }
 
@@ -29,20 +33,49 @@ class CartController extends BaseOrderController
             return redirect()->route('home.item.detail', ['id' => $request->id_store_item])->with('Error', $validator->errors());
         }
 
+        $this->checkCart($request->id_store_item, $request->name, $request->quantity);
+
         switch ($request->submit){
             case 'buynow':
-
-                break;
+                //go to check out
+                return redirect()->route('order.checkout');
             case 'cart':
-                break;
+            default:
+                return redirect()->route('order.cart');
         }
     }
 
-    public function addToCart(Request $request){
+    private function checkCart($id, $name, $quantity){
+        $item = CartItem::where('store_item_id', $id)->where('user_id', Auth::id())->get();
 
+        if (count($item) > 0){
+            $item->update([
+                'quantity' => $quantity
+            ]);
+        } else {
+            CartItem::create([
+                'user_id' => Auth::id(),
+                'store_item_id' => $id,
+                'quantity' => $quantity,
+                'name' => $name
+            ]);
+        }
     }
 
-    public function removeFromCart(Request $request){
+    private function getAllItem(){
+        return CartItem::where('user_id', Auth::id())->get();
+    }
+
+    public function addToFavorite($id){
+        return redirect()->route('order.cart');
+    }
+
+    public function removeFromCart($id){
+        CartItem::find($id)->delete();
+        return redirect()->route('order.cart');
+    }
+
+    public function submitToCheckOut(Request $request){
 
     }
 }

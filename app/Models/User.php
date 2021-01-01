@@ -15,6 +15,8 @@ class User extends Authenticatable
         'name',
         'email',
         'token',
+        'promo_code',
+        'discount',
     ];
 
     public function cartItems(){

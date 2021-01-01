@@ -36,6 +36,8 @@ Route::group(
         Route::post('buy', [CartController::class, 'buy'])->name('buy');
 
         Route::get('cart', [CartController::class, 'index'])->name('cart');
+        Route::get('cart/{id}/favorite', [CartController::class, 'addToFavorite'])->name('cart.favorite');
+        Route::get('cart/{id}/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
 
         Route::get('checkout', [CheckOutController::class, 'index'])->name('checkout');
 

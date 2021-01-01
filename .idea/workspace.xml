@@ -19,13 +19,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5f24f96-cc71-4201-a2fd-14b5281bcce2" name="Default Changelist" comment="view detail with data done">
+    <list default="true" id="c5f24f96-cc71-4201-a2fd-14b5281bcce2" name="Default Changelist" comment="home view done, data bug">
       <change beforePath="$PROJECT_DIR$/.idea/OwlixCustomer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OwlixCustomer.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laravel-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-plugin.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Order/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Order/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CartItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CartItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_23_212520_create_cart_items_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_23_212520_create_cart_items_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/order/cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/order/cart.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/product/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product/detail.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -179,8 +184,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/database/seeders/csv" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -188,18 +196,18 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\OwlixCustomer\resources\views\from" />
-      <recent name="C:\xampp\htdocs\OwlixCustomer\public" />
-      <recent name="C:\xampp\htdocs\OwlixCustomer\public\js" />
-      <recent name="C:\xampp\htdocs\OwlixCustomer\public\css" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\OwlixCustomer\database\seeders\csv" />
       <recent name="C:\xampp\htdocs\OwlixCustomer\public\img" />
       <recent name="C:\xampp\htdocs\OwlixCustomer\resources\views\inc" />
       <recent name="C:\xampp\htdocs\OwlixCustomer\public\vendor" />
       <recent name="C:\xampp\htdocs\OwlixCustomer\public\js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\OwlixCustomer\resources\views\from" />
+      <recent name="C:\xampp\htdocs\OwlixCustomer\public" />
+      <recent name="C:\xampp\htdocs\OwlixCustomer\public\js" />
+      <recent name="C:\xampp\htdocs\OwlixCustomer\public\css" />
     </key>
   </component>
   <component name="RunManager">
@@ -218,8 +226,7 @@
       <updated>1608717949873</updated>
       <workItem from="1608717951025" duration="12587000" />
       <workItem from="1608842112908" duration="5860000" />
-      <workItem from="1608876362155" duration="22704000" />
-      <workItem from="1608958561361" duration="8944000" />
+      <workItem from="1608876362155" duration="21154000" />
     </task>
     <task id="LOCAL-00001" summary="login view done">
       <created>1608742477906</created>
@@ -291,21 +298,7 @@
       <option name="project" value="LOCAL" />
       <updated>1608926155453</updated>
     </task>
-    <task id="LOCAL-00011" summary="cart design done, no data">
-      <created>1608929321509</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1608929321509</updated>
-    </task>
-    <task id="LOCAL-00012" summary="view detail with data done">
-      <created>1608971328879</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1608971328879</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -335,9 +328,7 @@
     <MESSAGE value="csv seeder bug fix" />
     <MESSAGE value="remake controller and web route" />
     <MESSAGE value="home view done, data bug" />
-    <MESSAGE value="cart design done, no data" />
-    <MESSAGE value="view detail with data done" />
-    <option name="LAST_COMMIT_MESSAGE" value="view detail with data done" />
+    <option name="LAST_COMMIT_MESSAGE" value="home view done, data bug" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1608740397354">
@@ -368,10 +359,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="461" y="169" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1608842283667" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1608929323102">
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1608881264993">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1608929323102" />
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1608881264993" />
     <state x="265" y="128" width="1422" height="691" key="editAsTableFormatDialogDimension" timestamp="1608908136608">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

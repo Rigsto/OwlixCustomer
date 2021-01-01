@@ -17,36 +17,35 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($data['data'] as $order)
-                            @if ($order['id_customer'] == Session::get('user.data.id'))
-                                @foreach ($order['order_items'] as $item)
-                                    <?php
-                                    $total = $total + ($item['quantity']*$item['store_item']['store_item_price']);
-                                    $order_id = $order['id'];
-                                    ?>
-                                    @csrf
-                                    {{-- {{ json_encode($item) }} --}}
-                                    <tr class="my-5">
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="productThumbnail">
-                                                    <img src={{ $item['store_item']['store_item_images'][0]['image_url'] }} class="rounded" alt="">
-                                                </div>
-                                                <div class="ml-3">
-                                                    <h5 class="truncate">{{ $item['store_item']['name'] }}</h5>
-                                                    <p class="text-muted">{{ $item['store_item']['store_item_description'] }}</p>
-                                                </div>
-                                            </div></td>
-                                        <td>Rp {{ $item['store_item']['store_item_price']}}</td>
-                                        <td><input type="number" value="{{ $item['quantity']}}" min="0" max="1000" step="10"/></td>
-                                        <td><p>Rp {{ $item['quantity']*$item['store_item']['store_item_price']}}</p></td>
-                                        <td>
-                                            <a href="" class="mr-4 text-muted" style="font-size: 20px;"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                            <a href="" class="mr-4 text-danger" style="font-size: 20px;"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @endif
+                        @php
+                        $total = 0;
+                        @endphp
+                        @foreach($items as $id => $item)
+                            <tr class="my-5">
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="productThumbnail">
+                                            <img src="{{ asset('img/accountlogo.png') }}" alt="{{ $item->name }} picture">
+                                        </div>
+                                        <div class="ml-3">
+                                            <h5 class="truncate">{{ $item->name }}</h5>
+                                            <p class="text-muted">{{ $item->name }}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Rp. {{ number_format(0, 0, "", ".") }}</td>
+                                <td>{{ $item->quantity }}</td>
+                                <td>Rp. {{ number_format(($item->quantity) * 0, 0, "", ".") }}</td>
+                                @php $total += $item->quantity * 0; @endphp
+                                <td>
+                                    <a href="{{ route('order.cart.favorite', $item->id) }}" class="mr-4 text-muted" style="font-size: 20px;">
+                                        <i class="fa fa-heart" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="{{ route('order.cart.remove', $item->id) }}" class="mr-4 text-danger" style="font-size: 20px;">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
                         @endforeach
                         </tbody>
                     </table>
@@ -60,23 +59,22 @@
                 <div class="card my-5 px-3 py-4 rounded-medium">
                     <div class="d-flex justify-content-between align-items-center">
                         <p class="text-muted">Subtotal :</p>
-                        <p>Rp {{$total}}</p>
+                        <p>Rp. {{ number_format($total, 0, "", ".") }}</p>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-3">
                         <p class="text-muted">Diskon :</p>
-                        <p style="color: #223b85;">Rp 78.000 (-20%)</p>
+                        <p style="color: #223b85;">Rp. {{ number_format(50000, 0, "", ".") }} (-20%)</p>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-5 mb-3">
                         <p class="text-muted">Promo</p>
-                        <a href="">Masukkan Kode Promo</a>
+                        <a data-toggle="collapse" href="#kodePromo" role="button" aria-expanded="false" aria-controls="kodePromo">Masukkan Kode Promo</a>
                     </div>
-                    <div class="promo-code mb-4 px-3 py-3 rounded" style="background-color: rgb(244, 245, 255);">
+                    <div class="promo-code mb-4 px-3 py-3 rounded collapse" style="background-color: rgb(244, 245, 255);" id="kodePromo">
                         <form class="form-inline row">
                             <div class="mb-2 col-lg-8">
-                                <input type="password" class="form-control w-100" id="inputPassword2" placeholder="Kode Promo">
+                                <input type="text" class="form-control w-100" id="kode_promo" placeholder="Kode Promo" name="kode_promo">
                             </div>
-                            <div class="mb-2 col-lg-4"><button type="submit" class="btn btn-primary w-100">Pakai</button></div>
-
+                            <div class="mb-2 col-lg-4"><button type="submit" class="btn btn-primary w-100 btn-sm">Pakai</button></div>
                         </form>
                         <p class="text-primary">
                             20% Discount
@@ -86,15 +84,15 @@
                     <div style="width: 100%; height: 1px; background-color: rgb(196, 196, 196);"></div>
                     <div class="d-flex justify-content-between align-items-center mt-3">
                         <p>Total</p>
-                        <p>Rp 390.000</p>
+                        <p>Rp. {{ number_format(123456, 0, "", ".") }}</p>
                     </div>
                     <div>
-                        <button class="btn-primary rounded w-100 py-2 px-3 mt-5 h5" onclick="window.location.href='checkout'">
+                        <a href="" class="btn btn-primary rounded w-100 py-2 px-3 mt-3 h5">
                             Checkout
-                        </button>
-                        <button class="btn btn-light rounded w-100 py-2 px-3 mt-2 h5">
+                        </a>
+                        <a href="" class="btn btn-light rounded w-100 py-2 px-3 mt-2 h5">
                             Lanjutkan Belanja
-                        </button>
+                        </a>
                     </div>
                 </div>
 

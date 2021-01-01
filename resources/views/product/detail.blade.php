@@ -76,13 +76,15 @@
                         <div> <a><i class="fa fa-heart-o" style="font-size: 32px;" aria-hidden="false"></i></a></div>
 
                     </div>
-                    <form action="{{ route('order.buy') }}">
+                    <form action="{{ route('order.buy') }}" method="POST">
+                        @csrf
                         @include('inc.alert')
                         {!! Form::hidden('id_store_item', $data['id']) !!}
+                        {!! Form::hidden('name', $data['name']) !!}
                         <div class="d-flex align-items-center mt-5">
                             <div class="text-muted">Kuantitas</div>
                             <div class="d-flex ml-sm-3">
-                                {!! Form::number('quantity', 1, ['class'=>'form-control', 'id'=>'quantity', 'min'=>1, 'max'=>100, 'step'=>1]) !!}
+                                {!! Form::number('quantity', 1, ['class'=>'form-control', 'id'=>'quantity', 'min'=>1, 'max'=>100, 'step'=>1, 'required']) !!}
                             </div>
                         </div>
                         <div class="d-flex align-items-center mt-4">
@@ -92,7 +94,6 @@
                     </form>
                 </div>
             </div>
-
         </div>
     </div>
     <div class="container">
