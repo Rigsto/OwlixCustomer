@@ -15,11 +15,9 @@ class User extends Authenticatable
         'name',
         'email',
         'token',
-        'promo_code',
-        'discount',
     ];
 
-    public function cartItems(){
-        return $this->hasMany(CartItem::class);
+    public function order(){
+        return $this->hasOne(Order::class);
     }
 }

@@ -10,14 +10,9 @@ class CartItem extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'store_item_id', 'quantity', 'name'];
+    protected $fillable = ['order_id', 'store_item_id', 'quantity', 'name', 'price'];
 
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
-
-    public function hasItem($id){
-        $item = CartItem::where('user_id', Auth::id())->where('store_item_id', $id)->get();
-        return count($item) > 0;
+    public function order(){
+        return $this->belongsTo(Order::class);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Order;
 
 use App\Http\Controllers\Base\BaseOrderController;
 use App\Models\CartItem;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -33,7 +34,7 @@ class CartController extends BaseOrderController
             return redirect()->route('home.item.detail', ['id' => $request->id_store_item])->with('Error', $validator->errors());
         }
 
-        $this->checkCart($request->id_store_item, $request->name, $request->quantity);
+        $this->checkCart($request->id_store_item, $request->name, $request->quantity, $request->price);
 
         switch ($request->submit){
             case 'buynow':
@@ -45,8 +46,18 @@ class CartController extends BaseOrderController
         }
     }
 
-    private function checkCart($id, $name, $quantity){
-        $item = CartItem::where('store_item_id', $id)->where('user_id', Auth::id())->get();
+    private function checkCart($id, $name, $quantity, $price){
+        $or = Order::where('user_id', Auth::id())->get();
+
+        if (count($or) == 1){
+            $order = $or->first();
+        } else {
+            $order = Order::create([
+                'user_id' => Auth::id()
+            ]);
+        }
+
+        $item = CartItem::where('store_item_id', $id)->where('order_id', $order->id)->get();
 
         if (count($item) > 0){
             $item->update([
@@ -54,16 +65,23 @@ class CartController extends BaseOrderController
             ]);
         } else {
             CartItem::create([
-                'user_id' => Auth::id(),
+                'order_id' => $order->id,
                 'store_item_id' => $id,
                 'quantity' => $quantity,
-                'name' => $name
+                'name' => $name,
+                'price' => $price
             ]);
         }
     }
 
     private function getAllItem(){
-        return CartItem::where('user_id', Auth::id())->get();
+        $order = Order::where('user_id', Auth::id())->get();
+
+        if (count($order) > 0){
+            return $order->first()->items;
+        } else {
+            return [];
+        }
     }
 
     public function addToFavorite($id){
@@ -73,6 +91,30 @@ class CartController extends BaseOrderController
     public function removeFromCart($id){
         CartItem::find($id)->delete();
         return redirect()->route('order.cart');
+    }
+
+    public function removeAllFromCart(){
+        $items = $this->getAllItem();
+        foreach ($items as $item){ $item->delete(); }
+
+        $order = Order::where('user_id', Auth::id());
+        $order->delete();
+
+        return redirect()->route('order.cart');
+    }
+
+    public function kodePromo(Request $request){
+        $order = Order::where('user_id', Auth::id())->first();
+        $order->update([
+            'promo_code' => $request->code,
+            'discount' => $request->total * 20 / 100
+        ]);
+
+        //TODO: take data from backend, $request->code
+
+        return response()->json([
+            'discount' => 20
+        ]);
     }
 
     public function submitToCheckOut(Request $request){

@@ -81,6 +81,7 @@
                         @include('inc.alert')
                         {!! Form::hidden('id_store_item', $data['id']) !!}
                         {!! Form::hidden('name', $data['name']) !!}
+                        {!! Form::hidden('price', $data['store_item_price']) !!}
                         <div class="d-flex align-items-center mt-5">
                             <div class="text-muted">Kuantitas</div>
                             <div class="d-flex ml-sm-3">

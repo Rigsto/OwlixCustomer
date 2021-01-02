@@ -38,6 +38,9 @@ Route::group(
         Route::get('cart', [CartController::class, 'index'])->name('cart');
         Route::get('cart/{id}/favorite', [CartController::class, 'addToFavorite'])->name('cart.favorite');
         Route::get('cart/{id}/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
+        Route::get('cart/remove', [CartController::class, 'removeAllFromCart'])->name('cart.remove.all');
+        Route::post('cart/checkout', [CartController::class, 'submitToCheckOut'])->name('cart.checkout');
+        Route::get('cart/promo', [CartController::class, 'kodePromo'])->name('cart.promo');
 
         Route::get('checkout', [CheckOutController::class, 'index'])->name('checkout');
 

@@ -19,17 +19,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5f24f96-cc71-4201-a2fd-14b5281bcce2" name="Default Changelist" comment="home view done, data bug">
-      <change beforePath="$PROJECT_DIR$/.idea/OwlixCustomer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OwlixCustomer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-plugin.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="c5f24f96-cc71-4201-a2fd-14b5281bcce2" name="Default Changelist" comment="cart view and remove done">
+      <change afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_01_204618_create_orders_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Order/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Order/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/CartItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CartItem.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_23_212520_create_cart_items_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_23_212520_create_cart_items_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/inc/topnav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inc/topnav.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/order/cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/order/cart.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/product/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product/detail.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
@@ -298,7 +297,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608926155453</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="cart view and remove done">
+      <created>1609533940956</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1609533940956</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -328,7 +334,8 @@
     <MESSAGE value="csv seeder bug fix" />
     <MESSAGE value="remake controller and web route" />
     <MESSAGE value="home view done, data bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="home view done, data bug" />
+    <MESSAGE value="cart view and remove done" />
+    <option name="LAST_COMMIT_MESSAGE" value="cart view and remove done" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1608740397354">
