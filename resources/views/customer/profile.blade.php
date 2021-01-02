@@ -41,6 +41,10 @@
                        aria-controls="pills-dikirim" aria-selected="false">Dikirim</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" id="pills-batal-tab" data-toggle="pill" href="#pills-batal" role="tab"
+                       aria-controls="pills-batal" aria-selected="false">Ditolak</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" id="pills-selesai-tab" data-toggle="pill" href="#pills-selesai" role="tab"
                        aria-controls="pills-selesai" aria-selected="false">Selesai</a>
                 </li>
@@ -48,18 +52,15 @@
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active my-4" id="pills-belum-bayar" role="tabpanel"
                      aria-labelledby="pills-belum-bayar-tab">
-                    @foreach ($orders as $item)
-                        <div class="card px-4 py-4 mb-4 rounded-medium" id="Transaction_detail_PaymentOnHold">
+                    @foreach ($orders_new as $item)
+                        <div class="card px-4 py-4 mb-4 rounded-medium">
                             <div class="row align-items-center">
                                 <div class="col-sm-6">
                                     <p id="OrderInvoiceNumber"
-                                       class="font-weight-bold text-primary"> {{ $item['external_id'] }} </p>
-                                    <p class="text-muted mb-0">04 Agustus 2020, 09:45</p>
-                                    <p class="mt-1" style="font-weight: 500;">Hendy Shop | 3 Barang <span><a href="">Lihat</a></span>
-                                    </p>
-                                    <button class="btn btn-primary py-3 px-4 mt-4 rounded">Konfirmasi Pembayaran
-                                    </button>
-
+                                       class="font-weight-bold text-primary">{{ $item['external_id'] }}</p>
+                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->toDateTimeString() }}</p>
+                                    <p class="mt-1" style="font-weight: 500;">{{ count($item['order_items']) }} Barang | <span><a href="">Lihat Barang</a></span></p>
+                                    <button class="btn btn-primary py-3 px-4 mt-4 rounded">Konfirmasi Pembayaran</button>
                                 </div>
                                 <div class="col-sm-6">
                                     <table class="table table-striped">
@@ -67,19 +68,16 @@
                                         <tr>
                                             <td style="text-align: left;">Total</td>
                                             <td style="text-align: right; font-size: 16px; font-weight: 500;">
-                                                Rp {{$item['amount']}}</td>
+                                                Rp. {{ number_format($item['amount'], 0, "", ".")}}</td>
                                         </tr>
                                         <tr>
-
                                             <td style="text-align: left;">Metode Pembayaran</td>
                                             <td style="text-align: right;">BCA</td>
                                         </tr>
                                         <tr>
-
                                             <td style="text-align: left;">Kode Virtual Account<br>
                                                 <h5>0213241241515815</h5>
-                                                <input type="text" value="0213241241515815" id="kodeVA"
-                                                       style="display: none;">
+                                                <input type="text" value="0213241241515815" id="kodeVA" style="display: none;">
                                             </td>
                                             <td style="text-align: right;">
                                                 <button class="btn btn-light" onclick="copyCode()">Salin</button>
@@ -93,47 +91,59 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="tab-pane fade my-4" id="pills-diproses" role="tabpanel"
-                     aria-labelledby="pills-diproses-tab">
-                    <div class="card px-4 py-4 rounded-medium" id="Transaction_detail_PaymentOnHold">
+                <div class="tab-pane fade my-4" id="pills-diproses" role="tabpanel" aria-labelledby="pills-diproses-tab">
+                    @foreach($orders_paid as $item)
+                    <div class="card px-4 py-4 mb-2 rounded-medium" id="Transaction_detail_PaymentProcessed">
                         <div class="d-flex align-items-center">
                             <div class="col-sm-6">
-                                <p id="OrderInvoiceNumber" class="font-weight-bold text-primary">
-                                    INV/41515426/43634214151</p>
-                                <p class="text-muted mb-0">04 Agustus 2020, 09:45</p>
-                                <p class="mt-1" style="font-weight: 500;">Hendy Shop | 3 Barang <span><a
-                                            href="">Lihat</a></span></p>
+                                <p id="OrderInvoiceNumber" class="font-weight-bold text-primary">{{ $item['external_id'] }}</p>
+                                <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->toDateTimeString() }}</p>
+                                <p class="mt-1" style="font-weight: 500;">{{ count($item['order_items']) }} Barang | <span><a href="">Lihat Barang</a></span>
                             </div>
                             <div class="col-sm-6">
-                                <p class="text-right font-weight-bold " style="color:  #e8af12;">SEDANG DIKONFIRMASI KE
-                                    TOKO</p>
+                                <p class="text-right font-weight-bold " style="color:  #e8af12;">SEDANG DIKONFIRMASI KE TOKO</p>
                             </div>
                         </div>
-
                     </div>
+                    @endforeach
                 </div>
                 <div class="tab-pane fade my-4" id="pills-dikirim" role="tabpanel" aria-labelledby="pills-dikirim-tab">
-                    <div class="card px-4 py-4 rounded-medium" id="Transaction_detail_PaymentOnHold">
+                    @foreach($orders_ship as $item)
+                    <div class="card px-4 py-4 rounded-medium" id="Transaction_detail_PaymentShipped">
                         <div class="d-flex align-items-center">
                             <div class="col-sm-8">
-                                <p id="OrderInvoiceNumber" class="font-weight-bold text-primary">
-                                    INV/41515426/43634214151</p>
-                                <p class="text-muted mb-0">04 Agustus 2020, 09:45</p>
-                                <p class="mt-1" style="font-weight: 500;">Hendy Shop | 3 Barang <span><a
-                                            href="">Lihat</a></span></p>
+                                <p id="OrderInvoiceNumber" class="font-weight-bold text-primary">{{ $item['external_id'] }}</p>
+                                <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->toDateTimeString() }}</p>
+                                <p class="mt-1" style="font-weight: 500;">{{ count($item['order_items']) }} Barang | <span><a href="">Lihat Barang</a></span>
                             </div>
                             <div class="col-sm-4">
                                 <p class="font-weight-bold " style="color:  #e8af12;"><i
                                         class="fas fa-shipping-fast mr-2"></i>SEDANG DIKIRIM</p>
-                                <p class="text-muted mb-0">J&T Reguler</p>
-                                <p class="mt-1" style="font-weight: 500;">Resi : 21415474523523</span></p>
+                                <p class="text-muted mb-0">{{ $item['courier_service'] }}</p>
+                                <p class="mt-1" style="font-weight: 500;"><span>Resi : 21415474523523</span></p>
                             </div>
                         </div>
-
                     </div>
+                    @endforeach
+                </div>
+                <div class="tab-pane fade my-4" id="pills-batal" role="tabpanel" aria-labelledby="pills-batal-tab">
+                    @foreach($orders_reject as $item)
+                        <div class="card px-4 py-4 rounded-medium" id="Transaction_detail_PaymentRejected">
+                            <div class="d-flex align-items-center">
+                                <div class="col-sm-8">
+                                    <p id="OrderInvoiceNumber" class="font-weight-bold text-primary">{{ $item['external_id'] }}</p>
+                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->toDateTimeString() }}</p>
+                                    <p class="mt-1" style="font-weight: 500;">{{ count($item['order_items']) }} Barang | <span><a href="">Lihat Barang</a></span>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p class="font-weight-bold text-danger"><i class="fas fa-times mr-2"></i>DITOLAK</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
                 <div class="tab-pane fade my-4" id="pills-selesai" role="tabpanel" aria-labelledby="pills-selesai-tab">
-                    <div class="card px-4 py-4 rounded-medium" id="Transaction_detail_PaymentOnHold">
+                    <div class="card px-4 py-4 rounded-medium" id="Transaction_detail_Reject">
                         <div class="d-flex align-items-center">
                             <div class="col-sm-8">
                                 <p id="OrderInvoiceNumber" class="font-weight-bold text-primary">
@@ -143,10 +153,9 @@
                                             href="">Lihat</a></span></p>
                             </div>
                             <div class="col-sm-4">
-                                <p class="font-weight-bold text-success"><i class="fas fa-clipboard-check mr-2"></i>TERKIRIM
-                                </p>
+                                <p class="font-weight-bold text-success"><i class="fas fa-clipboard-check mr-2"></i>TERKIRIM</p>
                                 <p class="text-muted mb-0">Diterima Pada:</p>
-                                <p class="mt-1" style="font-weight: 500;">09 Agustus 2020, 12:30</span></p>
+                                <p class="mt-1" style="font-weight: 500;"><span>09 Agustus 2020, 12:30</span></p>
                             </div>
                         </div>
 

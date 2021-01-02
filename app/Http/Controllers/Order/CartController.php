@@ -15,7 +15,7 @@ class CartController extends BaseOrderController
         return view('order.cart', [
             'order' => false,
             'order_process' => 1,
-            'items' => $this->getAllItem()
+            'items' => $this->getItems()
         ]);
     }
 
@@ -47,7 +47,7 @@ class CartController extends BaseOrderController
     }
 
     private function checkCart($id, $name, $quantity, $price){
-        $or = Order::where('user_id', Auth::id())->get();
+        $or = $this->getOrder();
 
         if (count($or) == 1){
             $order = $or->first();
@@ -74,16 +74,6 @@ class CartController extends BaseOrderController
         }
     }
 
-    private function getAllItem(){
-        $order = Order::where('user_id', Auth::id())->get();
-
-        if (count($order) > 0){
-            return $order->first()->items;
-        } else {
-            return [];
-        }
-    }
-
     public function addToFavorite($id){
         return redirect()->route('order.cart');
     }
@@ -94,7 +84,7 @@ class CartController extends BaseOrderController
     }
 
     public function removeAllFromCart(){
-        $items = $this->getAllItem();
+        $items = $this->getItems();
         foreach ($items as $item){ $item->delete(); }
 
         $order = Order::where('user_id', Auth::id());
@@ -118,6 +108,8 @@ class CartController extends BaseOrderController
     }
 
     public function submitToCheckOut(Request $request){
-
+        if (count($this->getOrder()) > 0 && count($this->getItems()) > 0){
+            return redirect()->route('order.checkout');
+        }
     }
 }

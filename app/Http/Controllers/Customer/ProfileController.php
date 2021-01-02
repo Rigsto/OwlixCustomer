@@ -29,11 +29,19 @@ class ProfileController extends Controller
 
         return view('customer.profile', [
             'profile' => $contentProfile['data'],
-            'orders' => $contentOrder['data']
+            'orders_new' => $contentOrder['data']['NEW'],
+            'orders_paid' => $contentOrder['data']['PAID'],
+            'orders_ship' => $contentOrder['data']['SHIPPING'],
+            'orders_reject' => $contentOrder['data']['REJECTED'],
         ]);
     }
 
-    public function update(Request $request){
+    public function show($id){
+
+    }
+
+    //edit profile
+    public function updateProfile(Request $request){
 
     }
 }
