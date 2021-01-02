@@ -36,12 +36,32 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function show($id){
+    public function show(Request $request){
+        $client = new Client();
+        $response = $client->get((new OwlixApi())->read_order(), [
+            'headers' => [
+                'Authorization' => 'Bearer '.Auth::user()->token
+            ],
+            'form-params' => [
+                'id_order' => $request->id
+            ]
+        ])->getBody();
+        $content = json_decode($response, true);
 
+        return $this->jsonModal('modal.orderdetails', [
+            'data' => $content['data']
+        ]);
     }
 
     //edit profile
     public function updateProfile(Request $request){
 
+    }
+
+    public function jsonModal($view, $data){
+        $vd = view($view, $data)->render();
+        return response()->json([
+            'modal' => $vd
+        ]);
     }
 }

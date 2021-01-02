@@ -59,7 +59,7 @@
                                     <p id="OrderInvoiceNumber"
                                        class="font-weight-bold text-primary">{{ $item['external_id'] }}</p>
                                     <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->toDateTimeString() }}</p>
-                                    <p class="mt-1" style="font-weight: 500;">{{ count($item['order_items']) }} Barang | <span><a href="">Lihat Barang</a></span></p>
+                                    <p class="mt-1" style="font-weight: 500;">{{ count($item['order_items']) }} Barang | <span><a href="javascript: detail({{$item['id']}})">Lihat Barang</a></span></p>
                                     <button class="btn btn-primary py-3 px-4 mt-4 rounded">Konfirmasi Pembayaran</button>
                                 </div>
                                 <div class="col-sm-6">
@@ -98,10 +98,10 @@
                             <div class="col-sm-6">
                                 <p id="OrderInvoiceNumber" class="font-weight-bold text-primary">{{ $item['external_id'] }}</p>
                                 <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->toDateTimeString() }}</p>
-                                <p class="mt-1" style="font-weight: 500;">{{ count($item['order_items']) }} Barang | <span><a href="">Lihat Barang</a></span>
+                                <p class="mt-1" style="font-weight: 500;">{{ count($item['order_items']) }} Barang | <span><a href="javascript: detail({{$item['id']}})">Lihat Barang</a></span>
                             </div>
                             <div class="col-sm-6">
-                                <p class="text-right font-weight-bold " style="color:  #e8af12;">SEDANG DIKONFIRMASI KE TOKO</p>
+                                <p class="text-right font-weight-bold " style="color: #e8af12;">SEDANG DIKONFIRMASI KE TOKO</p>
                             </div>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
                             <div class="col-sm-8">
                                 <p id="OrderInvoiceNumber" class="font-weight-bold text-primary">{{ $item['external_id'] }}</p>
                                 <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->toDateTimeString() }}</p>
-                                <p class="mt-1" style="font-weight: 500;">{{ count($item['order_items']) }} Barang | <span><a href="">Lihat Barang</a></span>
+                                <p class="mt-1" style="font-weight: 500;">{{ count($item['order_items']) }} Barang | <span><a href="javascript: detail({{$item['id']}})">Lihat Barang</a></span>
                             </div>
                             <div class="col-sm-4">
                                 <p class="font-weight-bold " style="color:  #e8af12;"><i
@@ -133,7 +133,7 @@
                                 <div class="col-sm-8">
                                     <p id="OrderInvoiceNumber" class="font-weight-bold text-primary">{{ $item['external_id'] }}</p>
                                     <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->toDateTimeString() }}</p>
-                                    <p class="mt-1" style="font-weight: 500;">{{ count($item['order_items']) }} Barang | <span><a href="">Lihat Barang</a></span>
+                                    <p class="mt-1" style="font-weight: 500;">{{ count($item['order_items']) }} Barang | <span><a href="javascript: detail({{$item['id']}})">Lihat Barang</a></span>
                                 </div>
                                 <div class="col-sm-4">
                                     <p class="font-weight-bold text-danger"><i class="fas fa-times mr-2"></i>DITOLAK</p>
@@ -158,10 +158,34 @@
                                 <p class="mt-1" style="font-weight: 500;"><span>09 Agustus 2020, 12:30</span></p>
                             </div>
                         </div>
-
                     </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modal" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content" id="modalBody"></div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        function detail(id){
+            $.ajax({
+                url: "{{route('customer.order.items')}}",
+                method: "GET",
+                data: {
+                    id: id,
+                },
+                success: function (data) {
+                    $('#modalBody').html(data.modal);
+                    $('#modal').modal();
+                },
+                error: function (a, b, c) {
+                    alert('Failed to get data');
+                }
+            })
+        }
+    </script>
 @endsection
