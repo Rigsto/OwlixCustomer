@@ -19,9 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5f24f96-cc71-4201-a2fd-14b5281bcce2" name="Default Changelist" comment="profile view, order list done">
-      <change afterPath="$PROJECT_DIR$/resources/views/modal/orderdetails.blade.php" afterDir="false" />
+    <list default="true" id="c5f24f96-cc71-4201-a2fd-14b5281bcce2" name="Default Changelist" comment="detail pesanan modal still not working">
+      <change afterPath="$PROJECT_DIR$/resources/views/customer/orders.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/OrderController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/ProfileController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/customer/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
@@ -219,6 +221,7 @@
       <workItem from="1608717951025" duration="12587000" />
       <workItem from="1608842112908" duration="5860000" />
       <workItem from="1608876362155" duration="21154000" />
+      <workItem from="1609650945952" duration="3041000" />
     </task>
     <task id="LOCAL-00001" summary="login view done">
       <created>1608742477906</created>
@@ -311,7 +314,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609560790386</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="detail pesanan modal still not working">
+      <created>1609570297325</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1609570297326</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,7 +354,8 @@
     <MESSAGE value="cart view and remove done" />
     <MESSAGE value="cart done except favorites" />
     <MESSAGE value="profile view, order list done" />
-    <option name="LAST_COMMIT_MESSAGE" value="profile view, order list done" />
+    <MESSAGE value="detail pesanan modal still not working" />
+    <option name="LAST_COMMIT_MESSAGE" value="detail pesanan modal still not working" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

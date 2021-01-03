@@ -62,10 +62,9 @@ Route::group(
     function (){
         Route::get('profile', [ProfileController::class, 'index'])->name('profile');
         Route::patch('profile', [ProfileController::class, 'updateProfile'])->name('profile.edit');
-        Route::get('order/items', [ProfileController::class, 'show'])->name('order.items');
 
         Route::get('orders', [OrderController::class, 'index'])->name('order');
-
+        Route::get('order/items', [OrderController::class, 'show'])->name('order.items');
     }
 );
 
