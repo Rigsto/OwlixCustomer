@@ -34,8 +34,8 @@ class OrderController extends Controller
             'headers' => [
                 'Authorization' => $this->getToken()
             ],
-            'form-params' => [
-                'id_order' => $request->id
+            'query' => [
+                'id_order' => $request->id_order
             ]
         ])->getBody();
         $content = json_decode($response, true);

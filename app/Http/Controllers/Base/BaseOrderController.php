@@ -13,7 +13,7 @@ class BaseOrderController extends Controller
         return $order = Order::where('user_id', Auth::id())->get();
     }
 
-    public function getItems(): array{
+    public function getItems() {
         $order = $this->getOrder();
 
         if (count($order) > 0){

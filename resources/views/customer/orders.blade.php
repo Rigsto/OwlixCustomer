@@ -43,7 +43,7 @@
                                         <tr>
                                             <td style="text-align: left;">Total</td>
                                             <td style="text-align: right; font-size: 16px; font-weight: 500;">
-                                                Rp. {{ number_format($item['amount'], 0, "", ".")}}</td>
+                                                Rp. {{ number_format($item['amount'] + $item['delivery_expense'], 0, "", ".")}}</td>
                                         </tr>
                                         <tr>
                                             <td style="text-align: left;">Metode Pembayaran</td>
@@ -146,12 +146,12 @@
 @endsection
 @section('scripts')
     <script>
-        function detail(id){
+        function detail(id_order){
             $.ajax({
                 url: "{{route('customer.order.items')}}",
                 method: "GET",
                 data: {
-                    id: id,
+                    id_order: id_order,
                 },
                 success: function (data) {
                     $('#modalBody').html(data.modal);
