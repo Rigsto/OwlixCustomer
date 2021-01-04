@@ -29,7 +29,7 @@
                                                 <img src="{{ asset('img/accountlogo.png') }}" alt="{{ $item->name }} picture">
                                             </div>
                                             <div class="ml-3">
-                                                <h5 class="truncate">{{ $item->name }}</h5>
+                                                <h5 class="truncate"><a href="{{ route('home.item.detail', $item->store_item_id) }}">{{ $item->name }}</a></h5>
                                                 <p class="text-muted">{{ $item->name }}</p>
                                             </div>
                                         </div>

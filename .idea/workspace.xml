@@ -19,14 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5f24f96-cc71-4201-a2fd-14b5281bcce2" name="Default Changelist" comment="detail pesanan modal still not working">
+    <list default="true" id="c5f24f96-cc71-4201-a2fd-14b5281bcce2" name="Default Changelist" comment="order details working and bug fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Base/BaseOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Base/BaseOrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/customer/orders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/orders.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/customer/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/from/Cart.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/modal/orderdetails.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/modal/orderdetails.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Order/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Order/CartController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Order/CheckOutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Order/CheckOutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CartItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CartItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_23_212520_create_cart_items_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_23_212520_create_cart_items_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/order/cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/order/cart.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/order/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/order/checkout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/product/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -321,7 +324,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609570297326</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="order details working and bug fixes">
+      <created>1609704006023</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1609704006023</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,7 +365,8 @@
     <MESSAGE value="cart done except favorites" />
     <MESSAGE value="profile view, order list done" />
     <MESSAGE value="detail pesanan modal still not working" />
-    <option name="LAST_COMMIT_MESSAGE" value="detail pesanan modal still not working" />
+    <MESSAGE value="order details working and bug fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="order details working and bug fixes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

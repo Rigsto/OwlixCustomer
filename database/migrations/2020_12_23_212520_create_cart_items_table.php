@@ -20,6 +20,7 @@ class CreateCartItemsTable extends Migration
             $table->bigInteger('quantity')->default(1);
             $table->string('name');
             $table->bigInteger('price');
+            $table->bigInteger('city_id');
             $table->timestamps();
         });
     }

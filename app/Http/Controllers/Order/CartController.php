@@ -34,7 +34,13 @@ class CartController extends BaseOrderController
             return redirect()->route('home.item.detail', ['id' => $request->id_store_item])->with('Error', $validator->errors());
         }
 
-        $this->checkCart($request->id_store_item, $request->name, $request->quantity, $request->price);
+        $this->checkCart(
+            $request->id_store_item,
+            $request->name,
+            $request->quantity,
+            $request->price,
+            $request->city
+        );
 
         switch ($request->submit){
             case 'buynow':
@@ -46,7 +52,7 @@ class CartController extends BaseOrderController
         }
     }
 
-    private function checkCart($id, $name, $quantity, $price){
+    private function checkCart($id, $name, $quantity, $price, $city){
         $or = $this->getOrder();
 
         if (count($or) == 1){
@@ -69,7 +75,8 @@ class CartController extends BaseOrderController
                 'store_item_id' => $id,
                 'quantity' => $quantity,
                 'name' => $name,
-                'price' => $price
+                'price' => $price,
+                'city_id' => $city
             ]);
         }
     }
