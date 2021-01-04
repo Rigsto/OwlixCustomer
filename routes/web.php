@@ -46,6 +46,7 @@ Route::group(
         Route::post('checkout/payment', [CheckOutController::class, 'payment'])->name('checkout.payment');
 
         Route::get('payment', [PaymentController::class, 'index'])->name('payment');
+        Route::get('payment/success', [PaymentController::class, 'success'])->name('payment.success');
     }
 );
 

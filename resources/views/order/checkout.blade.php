@@ -80,6 +80,64 @@
                     </div>
                     @endforeach
                 </div>
+                <div class="col col-5">
+                    <div class="card mt-5 px-3 py-3 rounded-medium checkoutAfterDetail">
+                        <div class="d-flex justify-content-between align-items-center px-2 pb-3 font-weight-normal">
+                            <a href="" class="text-primary float-right" style="font-size: 14px;">Tambahkan Catatan</a>
+                            <a href="" class="text-primary float-right" style="font-size: 14px;">Edit Keranjang</a>
+                        </div>
+                        <div style="width: 100%; height: 1px; background-color: rgb(225, 225, 225);" ></div>
+                        <div class="amountDetail px-3 py-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="text-muted">Subtotal :</p>
+                                <p>Rp 139.000</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <p class="text-muted">Diskon :</p>
+                                <p style="color: #223b85;">Rp 78.000 (-20%)</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <p class="text-muted">Biaya Pengiriman :</p>
+                                <p>Rp 19.000</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-5">
+                                <p class="font-weight-medium">Total :</p>
+                                <p class="h4">Rp 402.000</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mt-3 px-4 py-4 rounded-medium checkoutAfterDetail">
+                        <div><h5>
+                                Metode Pembayaran
+                            </h5></div>
+                        <div class="my-3">
+                            <div class="form-row align-items-center">
+                                <div class="col-3">
+                                    <img src="{{ asset('img/bcaLogo.svg') }}" alt="" class="w-100" style="max-width: 90px;">
+                                </div>
+                                <div class="col-9">
+                                    <select id="inputState" class="custom-select">
+                                        <option selected>BCA</option>
+                                        <option>Mandiri</option>
+                                        <option>BNI</option>
+                                        <option>BRI</option>
+                                        <div class="dropdown-divider"></div>
+                                        <option>GOPAY</option>
+                                        <option>OVO</option>
+                                        <option>DANA</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="my-3">
+                                <p class="text-muted" style="font-size: 14px;">Transfer Melalui Rekening bank BCA</p>
+                            </div>
+                            <div class="mt-4 w-100 ">
+{{--                                <button type="submit" class="btn btn-primary float-right py-2 px-3">Konfirmasi & Bayar Pesanan</button>--}}
+                                <a href="{{ route('order.payment') }}" class="btn btn-primary float-right py-2 px-3">Konfirmasi & Bayar Pesanan</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
