@@ -63,7 +63,8 @@ Route::group(
     ['namespace' => 'Customer', 'as' => 'customer.', 'middleware' => 'auth', 'prefix' => 'my'],
     function (){
         Route::get('profile', [ProfileController::class, 'index'])->name('profile');
-        Route::patch('profile', [ProfileController::class, 'updateProfile'])->name('profile.edit');
+        Route::get('profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
 
         Route::get('orders', [OrderController::class, 'index'])->name('order');
         Route::get('order/items', [OrderController::class, 'show'])->name('order.items');

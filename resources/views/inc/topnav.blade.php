@@ -44,7 +44,7 @@
                                 Pesanan
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <a class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="color: #3a3b45">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
                                 Logout
                             </a>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Models\AddressCity;
+use App\Models\AddressProvince;
 use App\Models\OwlixApi;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
@@ -34,7 +36,27 @@ class ProfileController extends Controller
     }
 
     //edit profile
-    public function updateProfile(Request $request){
+    public function edit(){
+        $client = new Client();
+
+        $response = $client->get((new OwlixApi())->detail(), [
+            'headers' => [
+                'Authorization' => $this->getToken()
+            ]
+        ])->getBody();
+        $content = json_decode($response, true);
+
+        $provinces = AddressProvince::pluck('name', 'id');
+        $cities = AddressCity::where('province_id', $content['data']['province_id'])->pluck('name', 'id');
+
+        return view('customer.editprofile', [
+            'profile' => $content['data'],
+            'provinces' => $provinces,
+            'cities' => $cities,
+        ]);
+    }
+
+    public function update(Request $request){
 
     }
 }
