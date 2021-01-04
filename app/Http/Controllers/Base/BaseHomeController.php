@@ -26,6 +26,11 @@ class BaseHomeController extends Controller
     }
 
     public function getCategoryName($categories, $id){
-        return $categories[$id-1]['name'];
+        foreach ($categories as $cat){
+            if ($cat['id'] == $id){
+                return $cat['name'];
+            }
+        }
+        return "";
     }
 }

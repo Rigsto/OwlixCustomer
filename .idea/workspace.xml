@@ -19,15 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5f24f96-cc71-4201-a2fd-14b5281bcce2" name="Default Changelist" comment="checkout, payment, payment success dummy view">
-      <change afterPath="$PROJECT_DIR$/resources/views/customer/editprofile.blade.php" afterDir="false" />
+    <list default="true" id="c5f24f96-cc71-4201-a2fd-14b5281bcce2" name="Default Changelist" comment="edit profile view">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/from/Checkout.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/from/Pembayaran Sukses.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/from/Pembayaran.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inc/topnav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inc/topnav.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Base/BaseHomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Base/BaseHomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/from/EditProfil.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/from/productPhoto.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/productPhoto.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/from/productSearch.blade.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +174,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/seeders/csv" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -192,11 +189,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\OwlixCustomer\public\js" />
       <recent name="C:\xampp\htdocs\OwlixCustomer\database\seeders\csv" />
       <recent name="C:\xampp\htdocs\OwlixCustomer\public\img" />
       <recent name="C:\xampp\htdocs\OwlixCustomer\resources\views\inc" />
       <recent name="C:\xampp\htdocs\OwlixCustomer\public\vendor" />
-      <recent name="C:\xampp\htdocs\OwlixCustomer\public\js" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\OwlixCustomer\resources\views\from" />
@@ -343,7 +340,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609773268013</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="edit profile view">
+      <created>1609776750206</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1609776750206</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,7 +384,8 @@
     <MESSAGE value="order details working and bug fixes" />
     <MESSAGE value="some checkout function done" />
     <MESSAGE value="checkout, payment, payment success dummy view" />
-    <option name="LAST_COMMIT_MESSAGE" value="checkout, payment, payment success dummy view" />
+    <MESSAGE value="edit profile view" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit profile view" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
