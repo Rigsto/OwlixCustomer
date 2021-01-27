@@ -132,4 +132,16 @@ class OwlixApi
     public function delete_wishlist(){
         return $this->base_url."delete_wishlist";
     }
+
+    //--------------------------------------------------------------------------
+    //store
+    public function read_store(){
+        return $this->base_url."read_store";
+    }
+
+    //--------------------------------------------------------------------------
+    //ongkir
+    public function read_ongkir(){
+        return $this->base_url."read_ongkir";
+    }
 }

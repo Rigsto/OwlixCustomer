@@ -2,13 +2,14 @@
 @section('content')
     <div class="container" id="profileSections">
         <div class="card rounded-medium my-5"
-             style="background-image: url('assets/img/bgtoko.png'); background-size: 100% 200px; background-repeat: no-repeat;">
+             style="background-image: url('{{ asset('img/bgtoko.png') }}'); background-size: 100% 200px; background-repeat: no-repeat;">
             <div class="card px-5 py-5 mx-sm-5 rounded-medium" style="margin-top: 100px;">
                 <div class="d-sm-flex justify-content-lg-between align-items-center">
                     <div class="d-sm-flex align-items-center">
-                        <div style="background-image: url('assets/img/shopOwner.png');" class="ProfilePicture"></div>
+                        {{ $store }}
+                        <div style="background-image: url('');" class="ProfilePicture"></div>
                         <div class="mx-3">
-                            <h4 id="StoreName">Hendy Shop</h4>
+                            <h4 id="StoreName"></h4>
                             <div class="product-rate-star">
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>

@@ -26,6 +26,51 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
+    public function showRegisterForm(){
+        return view('auth.register');
+    }
+
+    private function registerValidator(array $data){
+        return Validator::make($data, [
+            'full_name' => ['required'],
+            'email' => ['required'],
+            'phone' => ['required'],
+            'password' => ['required'],
+            'confirm_password' => ['required'],
+        ]);
+    }
+
+    public function register(Request $request){
+        $validator = $this->registerValidator($request->all());
+
+        if ($validator->fails()){
+            return redirect()->route('auth.showRegister')->with('Error', $validator->errors());
+        }
+
+        if ($request->password != $request->confirm_password){
+            return redirect()->route('auth.showRegister')->with('Error', 'Password tidak sama');
+        }
+
+        $client = new Client();
+        $response = $client->post((new OwlixApi())->register(), [
+            'form_params' => [
+                'name' => $request->full_name,
+                'email' => $request->email,
+                'password' => $request->password,
+                'c_password' => $request->c_password
+            ]
+        ])->getBody();
+        $content = json_decode($response, true);
+
+        if ($content['status'] == 'success'){
+            $this->updateToken($content['data']['token'], $request->email, $request->full_name);
+
+            return redirect()->route('home.home');
+        } else {
+            return redirect()->route('auth.showRegister')->with('Fail', $content['message']);
+        }
+    }
+
     private function loginValidator(array $data){
         return Validator::make($data, [
             'email' => ['required'],

@@ -1,4 +1,11 @@
 @extends('inc.app')
+@section("styles")
+    <style>
+        a:hover {
+            text-decoration: none;
+        }
+    </style>
+@endsection
 @section('content')
     <div class="container" id="profileSections">
         <div class="card px-5 py-5 mx-5 mt-5 rounded-medium">
@@ -19,8 +26,9 @@
                         </a>
                     </div>
                     <div class="mt-3">
-                        <button class="small-btn-secondary px-3 py-2 w-100"><i class="fas fa-comment-dots mr-2"></i>Bantuan
-                        </button>
+                        <a href="https://api.whatsapp.com/send?phone=15551234567" class="small-btn-secondary px-3 py-2 w-100">
+                            <i class="fas fa-comment-dots mr-2"></i>Bantuan
+                        </a>
                     </div>
                 </div>
             </div>
@@ -60,6 +68,7 @@
                             </table>
                         </div>
                     @endforeach
+
                 </div>
             </div>
         </div>

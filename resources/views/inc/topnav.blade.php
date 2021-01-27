@@ -43,6 +43,10 @@
                                 <i class="fa fa-list fa-sm fa-fw mr-2"></i>
                                 Pesanan
                             </a>
+                            <a class="dropdown-item" href="{{ route('customer.wishlist') }}">
+                                <i class="fa fa-heart fa-sm fa-fw mr-2"></i>
+                                Wishlist
+                            </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="color: #3a3b45">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
@@ -54,7 +58,7 @@
                         </div>
                     </div>
                 @else
-                    <a href="{{ route('auth.login') }}" class="btn-primary px-4 py-2 rounded" style="text-decoration: none">Login</a>
+                    <a href="{{ route('auth.showLogin') }}" class="btn-primary px-4 py-2 rounded" style="text-decoration: none">Login</a>
                 @endif
             </li>
         </ul>

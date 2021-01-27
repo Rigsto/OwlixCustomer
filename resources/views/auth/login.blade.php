@@ -29,13 +29,13 @@
                 <h3 class="my-4">Login ke Owlix</h3>
             </div>
             @include('inc.alert')
-            <form class="mb-3 mt-5" action="{{ route('auth.login') }}" method="POST">
+            <form class="mb-3 mt-3" action="{{ route('auth.login') }}" method="POST">
                 @csrf
-                <div class="form-group"><input class="form-control form-control-lg" type="text" placeholder="Email" name="email"/></div>
-                <div class="form-group"><input class="form-control form-control-lg" type="password" placeholder="Password" name="password"/></div>
+                <div class="form-group"><input class="form-control form-control-lg" type="text" placeholder="Email" name="email" required/></div>
+                <div class="form-group"><input class="form-control form-control-lg" type="password" placeholder="Password" name="password" required/></div>
                 <input type="submit" class="btn btn-lg btn-primary btn-block" value="Login">
             </form>
-            <div class="small mt-6"><a class="weight-500 action-link" href=""><span>or Sign In with Facebook</span></a></div>
+            <div class="small mt-6"><a class="weight-500 action-link" href="{{ route('auth.showRegister') }}"><span>or Register Here</span></a></div>
         </div>
     </div>
 </div>

@@ -40,8 +40,8 @@ class ProductController extends BaseHomeController
         $categories = $this->readAllCategories();
 
         if ($cat == 0){
-            $response = $client->get((new OwlixApi())->read_all_store_item())->getBody();
-            $content = json_decode($response, true)['data'];
+            $response = $client->get((new OwlixApi())->read_store_item())->getBody();
+            $content = json_decode($response, true)['data']['data'];
 
             return view('home.product_list', [
                 'items' => $content,

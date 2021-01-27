@@ -92,6 +92,7 @@
                         <div class="d-flex align-items-center mt-4">
                             <button class="btn-primary rounded px-4 py-2 mr-md-4" type="submit" value="buynow" name="submit">Beli Sekarang</button>
                             <button class="btn-secondary rounded px-4 py-2 mr-md-4" type="submit" value="cart" name="submit">Tambahkan ke Keranjang</button>
+                            <a href=""></a>
                         </div>
                     </form>
                 </div>

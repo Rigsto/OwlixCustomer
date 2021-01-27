@@ -118,22 +118,23 @@
                     @endforeach
                 </div>
                 <div class="tab-pane fade my-4" id="pills-selesai" role="tabpanel" aria-labelledby="pills-selesai-tab">
-                    <div class="card px-4 py-4 rounded-medium" id="Transaction_detail_Reject">
-                        <div class="d-flex align-items-center">
-                            <div class="col-sm-8">
-                                <p id="OrderInvoiceNumber" class="font-weight-bold text-primary">
-                                    INV/41515426/43634214151</p>
-                                <p class="text-muted mb-0">04 Agustus 2020, 09:45</p>
-                                <p class="mt-1" style="font-weight: 500;">Hendy Shop | 3 Barang <span><a
-                                            href="">Lihat</a></span></p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p class="font-weight-bold text-success"><i class="fas fa-clipboard-check mr-2"></i>TERKIRIM</p>
-                                <p class="text-muted mb-0">Diterima Pada:</p>
-                                <p class="mt-1" style="font-weight: 500;"><span>09 Agustus 2020, 12:30</span></p>
+                    @foreach($orders_completed as $item)
+                        <div class="card px-4 py-4 rounded-medium" id="Transaction_detail_Reject">
+                            <div class="d-flex align-items-center">
+                                <div class="col-sm-8">
+                                    <p id="OrderInvoiceNumber" class="font-weight-bold text-primary">{{ $item['external_id'] }}</p>
+                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->toDateTimeString() }}</p>
+                                    <p class="mt-1" style="font-weight: 500;">Hendy Shop | {{ count($item['order_items']) }} Barang <span><a
+                                                href="">Lihat</a></span></p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p class="font-weight-bold text-success"><i class="fas fa-clipboard-check mr-2"></i>TERKIRIM</p>
+                                    <p class="text-muted mb-0">Diterima Pada:</p>
+                                    <p class="mt-1" style="font-weight: 500;"><span>09 Agustus 2020, 12:30</span></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="modal fade" id="modal" role="dialog">

@@ -4,6 +4,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Customer\OrderController;
 use App\Http\Controllers\Customer\ProfileController;
+use App\Http\Controllers\Customer\WishlistController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\ProductController;
 use App\Http\Controllers\Home\StoreController;
@@ -53,6 +54,8 @@ Route::group(
 Route::group(
     ['namespace' => 'Auth', 'as' => 'auth.'],
     function (){
+        Route::get('register', [LoginController::class, 'showRegisterForm'])->name('showRegister');
+        Route::post('register', [LoginController::class, 'register'])->name('register');
         Route::get('login', [LoginController::class, 'showLoginForm'])->name('showLogin');
         Route::post('login', [LoginController::class, 'login'])->name('login');
         Route::post('logout', [LoginController::class, 'logout'])->name('logout');
@@ -68,6 +71,8 @@ Route::group(
 
         Route::get('orders', [OrderController::class, 'index'])->name('order');
         Route::get('order/items', [OrderController::class, 'show'])->name('order.items');
+
+        Route::get('wishlist', [WishlistController::class, 'index'])->name('wishlist');
     }
 );
 

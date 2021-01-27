@@ -25,6 +25,7 @@ class OrderController extends Controller
             'orders_paid' => $contentOrder['data']['PAID'],
             'orders_ship' => $contentOrder['data']['SHIPPING'],
             'orders_reject' => $contentOrder['data']['REJECTED'],
+            'orders_completed' => $contentOrder['data']['COMPLETED']
         ]);
     }
 

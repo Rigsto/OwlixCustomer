@@ -104,7 +104,7 @@
                                 </button>
                             </form>
                         @endif
-                        <a href="" class="btn btn-light rounded w-100 py-2 px-3 mt-2 h5">
+                        <a href="{{ route('home.home') }}" class="btn btn-light rounded w-100 py-2 px-3 mt-2 h5">
                             Lanjutkan Belanja
                         </a>
                     </div>
