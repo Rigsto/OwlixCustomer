@@ -26,22 +26,28 @@
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="productThumbnail">
-                                                <img src="{{ asset('img/accountlogo.png') }}" alt="{{ $item->name }} picture">
+                                                <img src="{{ $item->item()['store_item_images'][0]['image_url'] ?? asset('img/accountlogo.png') }}" alt="{{ $item->name }} picture">
                                             </div>
                                             <div class="ml-3">
-                                                <h5 class="truncate"><a href="{{ route('home.item.detail', $item->store_item_id) }}">{{ $item->name }}</a></h5>
-                                                <p class="text-muted">{{ $item->name }}</p>
+                                                <h5 class="truncate"><a href="{{ route('home.item.detail', $item->store_item_id) }}">{{ $item->item()['name'] }}</a></h5>
+                                                <p class="text-muted">{{ $item->item()['store']['name'] }}</p>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="text-center">Rp. {{ number_format($item->price, 0, "", ".") }}</td>
+                                    <td class="text-center">Rp. {{ number_format($item->item()['store_item_price'], 0, "", ".") }}</td>
                                     <td class="text-center">{{ $item->quantity }}</td>
-                                    <td class="text-center">Rp. {{ number_format(($item->quantity) * ($item->price), 0, "", ".") }}</td>
-                                    @php $total += $item->quantity * $item->price; @endphp
+                                    <td class="text-center">Rp. {{ number_format(($item->quantity) * ($item->item()['store_item_price']), 0, "", ".") }}</td>
+                                    @php $total += $item->quantity * $item->item()['store_item_price']; @endphp
                                     <td class="text-center">
-                                        <a href="{{ route('order.cart.favorite', $item->id) }}" class="mr-4 text-muted" style="font-size: 20px;">
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                        </a>
+                                        @if($item->isWishlist())
+                                            <a href="{{ route('customer.wishlist.delete', ['id'=>$item->store_item_id, 'from'=>'c']) }}" class="mr-4 text-danger" style="font-size: 20px;">
+                                                <i class="fa fa-heart" aria-hidden="true"></i>
+                                            </a>
+                                        @else
+                                            <a href="{{ route('customer.wishlist.add', ['id'=>$item->store_item_id, 'from'=>'c']) }}" class="mr-4 text-muted" style="font-size: 20px;">
+                                                <i class="fa fa-heart" aria-hidden="true"></i>
+                                            </a>
+                                        @endif
                                         <a href="{{ route('order.cart.remove', $item->id) }}" class="mr-4 text-danger" style="font-size: 20px;">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </a>

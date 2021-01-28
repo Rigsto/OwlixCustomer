@@ -23,7 +23,7 @@ class CartController extends BaseOrderController
         return Validator::make($data, [
             'quantity' => ['numeric', 'min:1', 'required'],
             'id_store_item' => ['numeric', 'required'],
-            'name' => ['required']
+            'id_store' => ['numeric', 'required']
         ]);
     }
 
@@ -36,10 +36,8 @@ class CartController extends BaseOrderController
 
         $this->checkCart(
             $request->id_store_item,
-            $request->name,
             $request->quantity,
-            $request->price,
-            $request->city
+            $request->id_store,
         );
 
         switch ($request->submit){
@@ -52,7 +50,7 @@ class CartController extends BaseOrderController
         }
     }
 
-    private function checkCart($id, $name, $quantity, $price, $city){
+    private function checkCart($id, $quantity, $store_id){
         $or = $this->getOrder();
 
         if (count($or) == 1){
@@ -74,9 +72,7 @@ class CartController extends BaseOrderController
                 'order_id' => $order->id,
                 'store_item_id' => $id,
                 'quantity' => $quantity,
-                'name' => $name,
-                'price' => $price,
-                'city_id' => $city
+                'store_id' => $store_id,
             ]);
         }
     }

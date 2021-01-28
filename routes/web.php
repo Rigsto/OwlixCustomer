@@ -37,7 +37,6 @@ Route::group(
         Route::post('buy', [CartController::class, 'buy'])->name('buy');
 
         Route::get('cart', [CartController::class, 'index'])->name('cart');
-        Route::get('cart/{id}/favorite', [CartController::class, 'addToFavorite'])->name('cart.favorite');
         Route::get('cart/{id}/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
         Route::get('cart/remove', [CartController::class, 'removeAllFromCart'])->name('cart.remove.all');
         Route::post('cart/checkout', [CartController::class, 'submitToCheckOut'])->name('cart.checkout');
@@ -45,9 +44,7 @@ Route::group(
 
         Route::get('checkout', [CheckOutController::class, 'index'])->name('checkout');
         Route::post('checkout/payment', [CheckOutController::class, 'payment'])->name('checkout.payment');
-
-        Route::get('payment', [PaymentController::class, 'index'])->name('payment');
-        Route::get('payment/success', [PaymentController::class, 'success'])->name('payment.success');
+        Route::get('checkout/success', [CheckOutController::class, 'success'])->name('checkout.success');
     }
 );
 
@@ -73,6 +70,8 @@ Route::group(
         Route::get('order/items', [OrderController::class, 'show'])->name('order.items');
 
         Route::get('wishlist', [WishlistController::class, 'index'])->name('wishlist');
+        Route::get('wishlist/{id}/{from}/add', [WishlistController::class, 'addWishlist'])->name('wishlist.add');
+        Route::get('wishlist/{id}/{from}/delete', [WishlistController::class, 'deleteWishlist'])->name('wishlist.delete');
     }
 );
 

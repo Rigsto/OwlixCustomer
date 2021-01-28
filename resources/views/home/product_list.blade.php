@@ -53,7 +53,7 @@
                                             <p class="card-text text-muted" style="font-size: 12px;">{{$data['store']['name']}}</p>
                                             <h4 class="card-title">{{$data['name']}}</h4>
                                             <div class="product-rate-star">
-                                                @include('inc.star_rating', ['star_count'=>random_int(1, 5), 'rating_count'=>random_int(0, 10000)])
+                                                @include('inc.star_rating', ['star_count'=> floor($data['rating']) ?? 0, 'rating_count'=>$data['rating_count']])
                                             </div>
                                             <div
                                                 class="product-price pt-4 d-flex justify-content-between align-items-end">

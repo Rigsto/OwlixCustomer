@@ -57,7 +57,7 @@
                     </div>
                     <div class="d-flex align-items-center">
                         <div class="product-rate-star">
-                            @include('inc.star_rating', ['star_count'=>random_int(1, 5), 'rating_count'=>random_int(0, 10000)])
+                            @include('inc.star_rating', ['star_count'=>floor($data['rating']) ?? 0, 'rating_count'=>$data['rating_count']])
                         </div>
                         <div class="border-right ml-md-4 pr-4">
                             <a href="#">Lihat Semua</a>
@@ -71,18 +71,22 @@
                     <div class="align-items-center justify-content-between mt-5" style="display: flex;">
                         <div class="priceInfo">
                             <h2>Rp {{ number_format($data['store_item_price'], 0, ',', '.') }}</h2>
-{{--                            <del class="text-muted">Rp 125.000</del>--}}
                         </div>
-                        <div> <a><i class="fa fa-heart-o" style="font-size: 32px;" aria-hidden="false"></i></a></div>
-
+                        <div>
+                            @if(\Illuminate\Support\Facades\Auth::check())
+                                @if($wishlist)
+                                    <a href="{{ route('customer.wishlist.delete', ['id'=>$data['id'], 'from'=>'d']) }}"><i class="fa fa-heart text-danger" style="font-size: 32px" aria-hidden="false"></i></a>
+                                @else
+                                    <a href="{{ route('customer.wishlist.add', ['id'=>$data['id'], 'from'=>'d']) }}"><i class="fa fa-heart text-muted" style="font-size: 32px" aria-hidden="false"></i></a>
+                                @endif
+                            @endif
+                        </div>
                     </div>
                     <form action="{{ route('order.buy') }}" method="POST">
                         @csrf
                         @include('inc.alert')
                         {!! Form::hidden('id_store_item', $data['id']) !!}
-                        {!! Form::hidden('name', $data['name']) !!}
-                        {!! Form::hidden('price', $data['store_item_price']) !!}
-                        {!! Form::hidden('city', $data['store']['city_id']) !!}
+                        {!! Form::hidden('id_store', $data['store']['id']) !!}
                         <div class="d-flex align-items-center mt-5">
                             <div class="text-muted">Kuantitas</div>
                             <div class="d-flex ml-sm-3">

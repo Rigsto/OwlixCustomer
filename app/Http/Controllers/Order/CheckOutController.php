@@ -28,7 +28,11 @@ class CheckOutController extends BaseOrderController
         ]);
     }
 
-    public function payment(Request $request){
+    public function checkout(Request $request){
+
+    }
+
+    public function success(){
 
     }
 }

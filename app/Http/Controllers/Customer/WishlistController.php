@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
 use App\Models\OwlixApi;
 use GuzzleHttp\Client;
-use Illuminate\Http\Request;
 
 class WishlistController extends Controller
 {
@@ -23,11 +22,41 @@ class WishlistController extends Controller
         ]);
     }
 
-    public function addWishlist($id){
+    public function addWishlist($id, $from){
+        $client = new Client();
+        $response = $client->post((new OwlixApi())->create_wishlist(), [
+            'headers' => [
+                'Authorization' => $this->getToken()
+            ],
+            'query' => [
+                'id_store_item' => $id
+            ]
+        ])->getBody();
+        $content = json_decode($response, true);
 
+        if ($from == "c"){
+            return redirect()->route('order.cart');
+        } else if ($from == "d"){
+            return redirect()->route('home.item.detail', $id);
+        }
     }
 
-    public function deleteWishlist($id){
+    public function deleteWishlist($id, $from){
+        $client = new Client();
+        $response = $client->delete((new OwlixApi())->delete_wishlist(), [
+            'headers' => [
+                'Authorization' => $this->getToken()
+            ],
+            'query' => [
+                'id_store_item' => $id
+            ]
+        ])->getBody();
+        $content = json_decode($response, true);
 
+        if ($from == "c"){
+            return redirect()->route('order.cart');
+        } else if ($from == "d"){
+            return redirect()->route('home.item.detail', $id);
+        }
     }
 }

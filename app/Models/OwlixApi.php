@@ -43,10 +43,6 @@ class OwlixApi
         return $this->base_url."customer_read_store_item";
     }
 
-    public function read_all_store_item(){
-        return $this->base_url."customer_read_all_store_item";
-    }
-
     //--------------------------------------------------------------------------
     //order
     public function create_order(){

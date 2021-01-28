@@ -33,4 +33,27 @@ class BaseHomeController extends Controller
         }
         return "";
     }
+
+    public function isWishlist($id): bool {
+        $client = new Client();
+
+        try {
+            $response = $client->get((new OwlixApi())->get_wishlist(), [
+                'headers' => [
+                    'Authorization' => $this->getToken()
+                ],
+                'query' => [
+                    'id_store_item' => $id
+                ]
+            ])->getBody();
+            $content = json_decode($response, true);
+
+            if ($content['status'] == 'success'){
+                if (count($content['data']['data']) > 0){
+                    return true;
+                }
+            }
+        } catch (GuzzleException $exception){}
+        return false;
+    }
 }
