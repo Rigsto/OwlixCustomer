@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CityCSVSeeder::class,
             ProvinceCSVSeeder::class,
+            CourierInfoSeeder::class,
         ]);
     }
 }

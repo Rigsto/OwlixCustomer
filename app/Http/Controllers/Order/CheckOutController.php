@@ -11,21 +11,14 @@ use Illuminate\Http\Request;
 class CheckOutController extends BaseOrderController
 {
     public function index(){
-        $client = new Client();
-        $responseAddress = $client->get((new OwlixApi())->read_address(), [
-            'headers' => [
-                'Authorization' => $this->getToken()
-            ]
-        ])->getBody();
-        $contentAddress = json_decode($responseAddress, true);
-
-        return view('order.checkout', [
-            'order' => false,
-            'order_process' => 2,
-            'address' => $contentAddress['data'][0],
-            'items' => $this->getItemsGrouped(),
-            'item_cities' => $this->getCityIds(),
-        ]);
+        $address = $this->getAddress();
+//        return view('order.checkout', [
+//            'order' => false,
+//            'order_process' => 2,
+//            'address' => $address,
+//            'datas' => $this->getFullData($address['city_id']),
+//        ]);
+        return $this->getFullData($address['city_id']);
     }
 
     public function checkout(Request $request){

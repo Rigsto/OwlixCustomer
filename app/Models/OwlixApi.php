@@ -103,6 +103,10 @@ class OwlixApi
         return $this->base_url."delete_customer_address";
     }
 
+    public function set_default_address(){
+        return $this->base_url."set_default_address";
+    }
+
     //--------------------------------------------------------------------------
     //voucher
     public function read_voucher(){
