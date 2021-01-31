@@ -15,6 +15,7 @@
                             <h4>Detail Pengiriman</h4>
                         </div>
                         <div class="my-4">
+                            <p class="d-none" id="withAddress">@if($address != null) {{ count($datas) }} @else 0 @endif</p>
                             @if($address != null)
                                 @php
                                     $city = \App\Models\AddressCity::find($address['city_id']);
@@ -49,7 +50,7 @@
                     <div class="card my-3 px-5 py-5 rounded-medium">
                         <div>
                             <h5 class="truncate"><a href="{{ route('home.store.detail', ['id' => $data['store']['id']]) }}">{{ $data['store']['name'] }}</a></h5>
-                            <p class="text-muted">{{ \App\Models\AddressCity::find($store['city_id'])->name }}</p>
+                            <p class="text-muted">{{ \App\Models\AddressCity::find($data['store']['city_id'])->name }}</p>
                         </div>
                         <table class="table table-borderless">
                             <thead>
@@ -66,48 +67,58 @@
                                 <tr>
                                     <td>{{ $id+1 }}</td>
                                     <td>{{ $item['name'] }}</td>
-{{--                                    <td class="text-center">{{ $item[''] }}</td>--}}
-{{--                                    <td class="text-right">Rp. {{ number_format($siitem['store_item_price'], 0, "", ".") }}</td>--}}
-{{--                                    <td class="text-right">Rp. {{ number_format($siitem['store_item_price'] * $si->quantity, 0, "", ".") }}</td>--}}
-{{--                                    @php--}}
-{{--                                    $total += $siitem['store_item_price'] * $si->quantity;--}}
-{{--                                    @endphp--}}
+                                    <td class="text-center">{{ $item['quantity'] }}</td>
+                                    <td class="text-right">Rp. {{ number_format($item['price'], 0, "", ".") }}</td>
+                                    <td class="text-right">Rp. {{ number_format($item['price'] * $item['quantity'], 0, "", ".") }}</td>
+                                    @php
+                                    $total += $item['price'] * $item['quantity'];
+                                    @endphp
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-{{--                        <div style="width: 100%; height: 1px; background-color: rgb(229, 229, 229);" class="my-2"></div>--}}
-{{--                        <p>Cara Pembayaran</p>--}}
-{{--                        {{  }}--}}
-{{--                        <table class="table" onload="javascript: ">--}}
-{{--                            <thead>--}}
-{{--                            <tr>--}}
-{{--                                <td></td>--}}
-{{--                                <td class="text-center">Nama Servis</td>--}}
-{{--                                <td class="text-center">Harga Ongkos Kirim</td>--}}
-{{--                            </tr>--}}
-{{--                            </thead>--}}
-{{--                            <tbody>--}}
-{{--                            <tr>--}}
-{{--                                <td>{!! Form::radio('cour', true, ['class'=>'radio-btn']) !!}</td>--}}
-{{--                                <td class="text-center">JNE Reguler</td>--}}
-{{--                                <td class="text-center">Rp. {{ number_format(8000, 0, "", ".") }}</td>--}}
-{{--                            </tr>--}}
-{{--                            </tbody>--}}
-{{--                        </table>--}}
+                        <div style="width: 100%; height: 1px; background-color: rgb(229, 229, 229);" class="my-2"></div>
+                        <p class="small">Cara Pembayaran</p>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <td></td>
+                                <td>Nama Servis</td>
+                                <td class="text-center">Waktu (Hari)</td>
+                                <td class="text-right">Harga Ongkos Kirim</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($data['ongkir'] as $ongkir)
+                                <tr>
+                                    <td class="text-center">{!! Form::radio('cour'.$data['store']['id'], $ongkir['id']."-".$ongkir['price'], false, ['class'=>'radio-btn']) !!}</td>
+                                    <td>{{ $ongkir['name'] }}</td>
+                                    <td class="text-center">{{ $ongkir['est'] }}</td>
+                                    <td class="text-right">Rp. {{ number_format($ongkir['price'], 0, "", ".") }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        <div style="width: 100%; height: 1px; background-color: rgb(229, 229, 229);" class="my-2"></div>
+                        <p class="small mb-2">Note</p>
+                        <div class="row">
+                            <div class="col-md-12">
+                                {!! Form::text('note'.$data['store']['id'], null, ['class'=>'form-control']) !!}
+                            </div>
+                        </div>
                     </div>
                     @endforeach
                 </div>
                 <div class="col col-5">
                     <div class="card mt-5 px-3 py-3 rounded-medium checkoutAfterDetail">
-                        <div class="d-flex justify-content-between align-items-center px-2 pb-3 font-weight-normal">
-                            <a href="" class="text-primary float-right" style="font-size: 14px;">Tambahkan Catatan</a>
-                            <a href="" class="text-primary float-right" style="font-size: 14px;">Edit Keranjang</a>
+                        <div class="d-flex px-3 pb-3 font-weight-normal">
+                            <a href="{{ route('order.cart') }}" class="text-primary float-right" style="font-size: 14px;">Edit Keranjang</a>
                         </div>
                         <div style="width: 100%; height: 1px; background-color: rgb(225, 225, 225);" ></div>
                         <div class="amountDetail px-3 py-3">
                             <div class="d-flex justify-content-between align-items-center">
                                 <p class="text-muted">Subtotal :</p>
+                                <p class="d-none" id="totalHarga">{{$total}}</p>
                                 <p>Rp {{ number_format($total, 0, "". ".") }}</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-3">
@@ -116,45 +127,23 @@
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-3">
                                 <p class="text-muted">Biaya Pengiriman :</p>
-                                <p>Rp {{ number_format($total_ongkir, 0, "", ".") }}</p>
+                                <p id="totalOngkir">Rp {{ number_format($total_ongkir, 0, "", ".") }}</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-5">
                                 <p class="font-weight-medium">Total :</p>
-                                <p class="h4">Rp {{ number_format($total + $total_ongkir, 0, "", ".") }}</p>
+                                <p class="h4" id="totalSemua">Rp {{ number_format($total + $total_ongkir, 0, "", ".") }}</p>
                             </div>
                         </div>
                     </div>
-{{--                    <div class="card mt-3 px-4 py-4 rounded-medium checkoutAfterDetail">--}}
-{{--                        <div><h5>--}}
-{{--                                Metode Pembayaran--}}
-{{--                            </h5></div>--}}
-{{--                        <div class="my-3">--}}
-{{--                            <div class="form-row align-items-center">--}}
-{{--                                <div class="col-3">--}}
-{{--                                    <img src="{{ asset('img/bcaLogo.svg') }}" alt="" class="w-100" style="max-width: 90px;">--}}
-{{--                                </div>--}}
-{{--                                <div class="col-9">--}}
-{{--                                    <select id="inputState" class="custom-select">--}}
-{{--                                        <option selected>BCA</option>--}}
-{{--                                        <option>Mandiri</option>--}}
-{{--                                        <option>BNI</option>--}}
-{{--                                        <option>BRI</option>--}}
-{{--                                        <div class="dropdown-divider"></div>--}}
-{{--                                        <option>GOPAY</option>--}}
-{{--                                        <option>OVO</option>--}}
-{{--                                        <option>DANA</option>--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="my-3">--}}
-{{--                                <p class="text-muted" style="font-size: 14px;">Transfer Melalui Rekening bank BCA</p>--}}
-{{--                            </div>--}}
-{{--                            <div class="mt-4 w-100 ">--}}
-{{--                                <button type="submit" class="btn btn-primary float-right py-2 px-3">Konfirmasi & Bayar Pesanan</button>--}}
-{{--                                <a href="" class="btn btn-primary float-right py-2 px-3">Konfirmasi & Bayar Pesanan</a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                    <div class="card mt-3 px-4 py-4 rounded-medium checkoutAfterDetail">
+                        <div>
+                            <h5>Informasi Pembayaran</h5>
+                            <p>Informasi Pembayaran akan dikirim ke email Anda. Silahkan cek email Anda setelah menekan tombol di bawah ini.</p>
+                        </div>
+                        <div class="my-3 mt-4 w-100">
+                            <button type="submit" class="btn btn-primary py-2 px-3" id="btn-submit">Konfirmasi & Bayar Pesanan</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
@@ -162,6 +151,56 @@
 @endsection
 @section('scripts')
     <script>
-        function loadKurir(from, to, weight, )
+        $(document).ready(function (){
+            document.getElementById('btn-submit').disabled = true;
+
+            $('input[type=radio]').change(function (){
+                reloadData();
+                checkData();
+            });
+        });
+
+        function reloadData(){
+            let subTotal = parseInt(document.getElementById("totalHarga").innerHTML);
+            const checkBoxes = document.getElementsByClassName("radio-btn");
+            const totalOngkir = document.getElementById('totalOngkir');
+            const total = document.getElementById('totalSemua');
+
+            let totOngkir = 0;
+            let tot = subTotal;
+
+            for (let i=0; i<checkBoxes.length; i++){
+                if (checkBoxes[i].checked){
+                    totOngkir += parseInt(checkBoxes[i].value.split("-")[1], 0);
+                }
+            }
+
+            tot += totOngkir;
+
+            totalOngkir.innerHTML = "Rp " + totOngkir.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            total.innerHTML = "Rp " + tot.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        function checkData(){
+            let withAddress = parseInt(document.getElementById('withAddress').innerHTML, 0);
+            if (withAddress > 0){
+                const checkBoxes = document.getElementsByClassName("radio-btn");
+                let count = 0;
+
+                for (let i=0; i<checkBoxes.length; i++){
+                    if (checkBoxes[i].checked){
+                        count++;
+                    }
+                }
+
+                if (count.toString() === withAddress.toString()){
+                    $('#btn-submit').prop('disabled', false);
+                } else {
+                    $('#btn-submit').prop('disabled', true);
+                }
+            } else {
+                $('#btn-submit').prop('disabled', false);
+            }
+        }
     </script>
 @endsection

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 class BaseOrderController extends Controller
 {
+    // CART SYSTEM ====================================================================================================
     public function getOrder(){
         return $order = Order::where('user_id', Auth::id())->get();
     }
@@ -28,7 +29,9 @@ class BaseOrderController extends Controller
         }
     }
 
+    // CHECKOUT SYSTEM ================================================================================================
     public function getFullData($cityTo){
+        $this->checkSystemOrder();
         $stores = $this->getStores();
         $full_data = [];
 
@@ -70,6 +73,12 @@ class BaseOrderController extends Controller
         }
 
         return $full_data;
+    }
+
+    private function checkSystemOrder(){
+        if (Auth::user()->order == null){
+            return redirect()->route('order.cart');
+        }
     }
 
     public function getAddress(){
@@ -116,8 +125,8 @@ class BaseOrderController extends Controller
             foreach ($store_ids as $stid){
                 array_push($stores, $this->searchStoreDetails($stid->store_id));
             }
-        } else {
-            array_push($stores, $this->searchStoreDetails($store_ids->store_id));
+        } else if (count($store_ids) == 1) {
+            array_push($stores, $this->searchStoreDetails($store_ids[0]['store_id']));
         }
         return $stores;
     }
@@ -150,9 +159,10 @@ class BaseOrderController extends Controller
                 } else {
                     $codeServer = $cost['service'];
                 }
-                $courId = CourierInfo::where('code', $courier)->where('service', $codeServer)->get()[0]->id;
+                $cour = CourierInfo::where('code', $courier)->where('service', $codeServer)->get()[0];
 
-                $data['id'] = $courId;
+                $data['id'] = $cour->id;
+                $data['name'] = $cour->name;
                 $data['est'] = explode(" ", $cost['cost'][0]['etd'])[0];
                 $data['price'] = $cost['cost'][0]['value'];
 
@@ -179,5 +189,86 @@ class BaseOrderController extends Controller
         $content = json_decode($response, true);
 
         return $content['data']['rajaongkir']['results'][0]['costs'];
+    }
+
+    // PAYMENT SYSTEM =================================================================================================
+    public function orderAll($data){
+        $order_id = Auth::user()->order->id;
+        $store_ids = CartItem::select('store_id')->where('order_id', $order_id)->groupBy('store_id')->get();
+
+        if (count($store_ids) > 1){
+            foreach ($store_ids as $sid){
+                $this->decodeDataPerStoreId($sid->store_id, $data);
+            }
+        } else if (count($store_ids) == 1) {
+            $this->decodeDataPerStoreId($store_ids[0]['store_id'], $data);
+        }
+
+        return true;
+    }
+
+    private function decodeDataPerStoreId($store_id, $data){
+        $courCode = "cour".$store_id;
+        $noteCode = "note".$store_id;
+
+        $courData = explode("-", $data->input($courCode));
+        $courId = $courData[0];
+        $courExpense = $courData[1];
+
+        $this->orderPerStore($store_id, $courId, $courExpense, $data->input($noteCode));
+    }
+
+    private function orderPerStore($store_id, $courier_id, $delivery_expense, $note){
+        $order_id = Auth::user()->order->id;
+        $item_database = CartItem::where('order_id', $order_id)->where('store_id', $store_id)->get();
+
+        $item_json = [];
+        foreach ($item_database as $item){
+            $item_data['id_store_item'] = $item->store_item_id;
+            $item_data['quantity'] = $item->quantity;
+
+            array_push($item_json, $item_data);
+        }
+
+        $courier = CourierInfo::find($courier_id);
+
+        $client = new Client();
+        $responseDefaultAddress = $client->get((new OwlixApi())->detail(), [
+            'headers' => [
+                'Authorization' => $this->getToken()
+            ],
+        ])->getBody();
+        $contentDefaultAddress = json_decode($responseDefaultAddress, true);
+        $defaultAddress = $contentDefaultAddress['data']['id_default_address'];
+
+        $client = new Client();
+        $response = $client->post((new OwlixApi())->create_order(), [
+            'headers' => [
+                'Authorization' => $this->getToken(),
+            ],
+            'form_params' => [
+                'note' => $note,
+                'courier_code' => $courier->code,
+                'courier_service' => $courier->service,
+                'delivery_expense' => $delivery_expense,
+                'id_customer_address' => $defaultAddress,
+                'order_item' => $item_json,
+            ]
+        ])->getBody();
+        $content = json_decode($response, true);
+
+        if ($content['status'] == 'success'){
+            $this->deleteCartItem($store_id);
+        }
+    }
+
+    private function deleteCartItem($store_id){
+        $order_id = Auth::user()->order->id;
+        CartItem::where('order_id', $order_id)->where('store_id', $store_id)->delete();
+    }
+
+    public function deleteOrder(){
+        $order_id = Auth::user()->order->id;
+        Order::where('id', $order_id)->delete();
     }
 }

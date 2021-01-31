@@ -122,27 +122,27 @@
 @section('scripts')
     <script>
         $(document).ready(function (){
-             $('#kode_click').click(function (){
-                 const promo = $('#kode_promo').val();
-                 const total = $('#subtotal').html();
+        {{--     $('#kode_click').click(function (){--}}
+        {{--         const promo = $('#kode_promo').val();--}}
+        {{--         const total = $('#subtotal').html();--}}
 
-                 $.ajax({
-                     url: "{{ route('order.cart.promo') }}",
-                     method: "GET",
-                     data: {
-                         code: promo,
-                         total: total,
-                     },
-                     success: function (data){
-                         const dis = data.discount * total / 100;
+        {{--         $.ajax({--}}
+        {{--             url: "{{ route('order.cart.promo') }}",--}}
+        {{--             method: "GET",--}}
+        {{--             data: {--}}
+        {{--                 code: promo,--}}
+        {{--                 total: total,--}}
+        {{--             },--}}
+        {{--             success: function (data){--}}
+        {{--                 const dis = data.discount * total / 100;--}}
 
-                         $('#kode_promo_text').html(promo);
-                         $('#discount_percentage_text').html(data.discount + "% discount");
-                         $('#discount_number_text').html("Rp. " + formatNumber(dis) + " (" + data.discount + "%)");
-                         $('#total_text').html("Rp. " + formatNumber(total-dis));
-                     }
-                 });
-             });
+        {{--                 $('#kode_promo_text').html(promo);--}}
+        {{--                 $('#discount_percentage_text').html(data.discount + "% discount");--}}
+        {{--                 $('#discount_number_text').html("Rp. " + formatNumber(dis) + " (" + data.discount + "%)");--}}
+        {{--                 $('#total_text').html("Rp. " + formatNumber(total-dis));--}}
+        {{--             }--}}
+        {{--         });--}}
+        {{--     });--}}
         });
 
         function formatNumber(num) {

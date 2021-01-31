@@ -43,7 +43,7 @@ Route::group(
         Route::get('cart/promo', [CartController::class, 'kodePromo'])->name('cart.promo');
 
         Route::get('checkout', [CheckOutController::class, 'index'])->name('checkout');
-        Route::post('checkout/payment', [CheckOutController::class, 'payment'])->name('checkout.payment');
+        Route::post('checkout/payment', [CheckOutController::class, 'checkout'])->name('checkout.payment');
         Route::get('checkout/success', [CheckOutController::class, 'success'])->name('checkout.success');
     }
 );

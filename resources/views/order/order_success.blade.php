@@ -2,12 +2,12 @@
 @section('content')
     @include('inc.order_topnav')
     <div class="container d-flex justify-content-center">
-        <div class="card px-lg-5 py-lg-5 rounded-medium my-5 text-center">
+        <div class="card px-lg-5 py-lg-5 rounded-medium my-5 text-center" style="max-width: 800px">
             <div class="px-lg-5">
-                <img src="{{ asset('img/Success Icon.svg') }}" class="w-75" alt="Payment Success Icon">
+                <img src="{{ asset('img/Success Icon.svg') }}" alt="Payment Success Icon">
                 <div class="mt-5">
-                    <h3>Pembayaran Diterima</h3>
-                    <p class="text-muted mt-3">Pesananmu sedang diproses oleh toko.</p>
+                    <h3>Pesanan Diterima</h3>
+                    <p class="text-muted mt-3">Pesananmu telah diterima oleh sistem. Kami telah mengirimkan email perihal info pembayaran. Segera lakukan pembayaran agar bisa diproses oleh toko.</p>
                 </div>
             </div>
             <div>

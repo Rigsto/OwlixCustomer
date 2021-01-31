@@ -61,9 +61,9 @@ class CartController extends BaseOrderController
             ]);
         }
 
-        $item = CartItem::where('store_item_id', $id)->where('order_id', $order->id)->get();
+        $item = CartItem::where('store_item_id', $id)->where('order_id', $order->id);
 
-        if (count($item) > 0){
+        if (count($item->get()) > 0){
             $item->update([
                 'quantity' => $quantity
             ]);
