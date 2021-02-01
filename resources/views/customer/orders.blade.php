@@ -33,7 +33,7 @@
                                 <div class="col-sm-6">
                                     <p id="OrderInvoiceNumber"
                                        class="font-weight-bold text-primary">{{ $item['external_id'] }}</p>
-                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->toDateTimeString() }}</p>
+                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->setTimezone('Asia/Jakarta')->toDayDateTimeString() }}</p>
                                     <p class="mt-1" style="font-weight: 500;">{{ count($item['order_items']) }} Barang | <span><a href="javascript: detail({{$item['id']}})">Lihat Barang</a></span></p>
                                     <button class="btn btn-primary py-3 px-4 mt-4 rounded">Konfirmasi Pembayaran</button>
                                 </div>
@@ -72,7 +72,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="col-sm-6">
                                     <p id="OrderInvoiceNumber" class="font-weight-bold text-primary">{{ $item['external_id'] }}</p>
-                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->toDateTimeString() }}</p>
+                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->setTimezone('Asia/Jakarta')->toDayDateTimeString() }}</p>
                                     <p class="mt-1" style="font-weight: 500;">{{ count($item['order_items']) }} Barang | <span><a href="javascript: detail({{$item['id']}})">Lihat Barang</a></span>
                                 </div>
                                 <div class="col-sm-6">
@@ -88,7 +88,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="col-sm-8">
                                     <p id="OrderInvoiceNumber" class="font-weight-bold text-primary">{{ $item['external_id'] }}</p>
-                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->toDateTimeString() }}</p>
+                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->setTimezone('Asia/Jakarta')->toDateTimeString() }}</p>
                                     <p class="mt-1" style="font-weight: 500;">{{ count($item['order_items']) }} Barang | <span><a href="javascript: detail({{$item['id']}})">Lihat Barang</a></span>
                                 </div>
                                 <div class="col-sm-4">
@@ -107,7 +107,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="col-sm-8">
                                     <p id="OrderInvoiceNumber" class="font-weight-bold text-primary">{{ $item['external_id'] }}</p>
-                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->toDateTimeString() }}</p>
+                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->setTimezone('Asia/Jakarta')->toDateTimeString() }}</p>
                                     <p class="mt-1" style="font-weight: 500;">{{ count($item['order_items']) }} Barang | <span><a href="javascript: detail({{$item['id']}})">Lihat Barang</a></span>
                                 </div>
                                 <div class="col-sm-4">
@@ -123,7 +123,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="col-sm-8">
                                     <p id="OrderInvoiceNumber" class="font-weight-bold text-primary">{{ $item['external_id'] }}</p>
-                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->toDateTimeString() }}</p>
+                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->setTimezone('Asia/Jakarta')->toDateTimeString() }}</p>
                                     <p class="mt-1" style="font-weight: 500;">Hendy Shop | {{ count($item['order_items']) }} Barang <span><a
                                                 href="">Lihat</a></span></p>
                                 </div>

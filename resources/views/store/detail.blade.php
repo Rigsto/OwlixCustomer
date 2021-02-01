@@ -6,30 +6,21 @@
             <div class="card px-5 py-5 mx-sm-5 rounded-medium" style="margin-top: 100px;">
                 <div class="d-sm-flex justify-content-lg-between align-items-center">
                     <div class="d-sm-flex align-items-center">
-{{--                        {{ $store }}--}}
-                        <div style="background-image: url('');" class="ProfilePicture"></div>
+                        <div style="background-image: url('{{ $store['image_url'] }}');" class="ProfilePicture"></div>
                         <div class="mx-3">
-                            <h4 id="StoreName"></h4>
-                            <div class="product-rate-star">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="ml-2" style="font-weight: 500; color: #e8af12;">4/5</span>
-                            </div>
+                            <h4 id="StoreName">{{ $store['name'] }}</h4>
                         </div>
                     </div>
                     <div class="d-lg-flex justify-content-lg-between">
                         <div class="mr-5">
                             <span class="mr-2 text-primary"><i class="fas fa-archive"></i></span><span
                                 class="text-primary" style="font-weight: 500;">Total Produk di Toko</span>
-                            <h4 class="mt-3">100 Produk</h4>
+                            <h4 class="mt-3">{{ count($products) }} Produk</h4>
                         </div>
                         <div>
                             <span class="mr-2 text-success"><i class="fas fa-truck-loading"></i></span><span
                                 class="text-success" style="font-weight: 500;">Total Produk terjual</span>
-                            <h4 class="mt-3">290 Produk</h4>
+                            <h4 class="mt-3">{{ $totalSold }} Produk</h4>
                         </div>
                     </div>
                 </div>
@@ -37,14 +28,7 @@
             <div class="card px-5 py-5 mx-5 mt-5 rounded-medium">
                 <h2>Deskripsi Toko</h2>
                 <p id="deskripsiToko">
-                    Hendy Shop adalah toko baru yang sedang merintis di dunia bisnis online . Layanan ini dikelola
-                    pribadi dan memiliki kepentingan
-                    membantu sesama dengan memberi sekian persen penjualan untuk donasi dan membantu sesama
-
-                    Selamat berbelanja di toko kami!
-                    .
-
-                    “Hendy Shop the best store :) “
+                    {{ $store['description'] }}
                 </p>
                 <div>
                     <button class="btn btn-primary rounded float-right py-2 px-3 mt-4"><i
@@ -60,36 +44,29 @@
                         <div><a href="http://">Lihat Semua</a></div>
                     </div>
                     <div class="row product-grid py-sm-4">
-                        @for($i=0; $i<10; $i++)
-                            <div class="col-3 px-3 py-3">
-                                <a href="{{ route('home.item.detail', ['id' => 0]) }}">
-                                    <div class="card mr-sm-2">
+                        @foreach($products as $data)
+                            <div class="col-4 px-3 py-3">
+                                <a href="{{ route('home.item.detail', ['id' => $data['id']]) }}">
+                                    <div class="card">
                                         <img class="card-img-top" style="height: 12rem;"
-                                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQN5k6SAtvgfbU5pqiRdNSUH6xzpymJbX5F7A&usqp=CAU"
+{{--                                             src="{{$data['store_item_images'][0]['image_url']}}"--}}
                                              alt="Card image cap">
                                         <div class="card-body">
-                                            <p class="card-text text-muted" style="font-size: 12px;">Shop name</p>
-                                            <h4 class="card-title">Product name</h4>
+                                            <p class="card-text text-muted" style="font-size: 12px;">{{$store['name']}}</p>
+                                            <h4 class="card-title">{{$data['name']}}</h4>
                                             <div class="product-rate-star">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="ml-2">4.3K</span>
+                                                @include('inc.star_rating', ['star_count'=> floor($data['rating']) ?? 0, 'rating_count'=>$data['rating_count']])
                                             </div>
                                             <div
                                                 class="product-price pt-4 d-flex justify-content-between align-items-end">
-                                                <p class="text-muted">
-                                                    <del> Rp 29.000</del>
-                                                </p>
-                                                <h5>Rp 20.000</h5>
+                                                <h5>
+                                                    Rp {{ number_format($data['store_item_price'], 0, ',', '.') }}</h5>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
                             </div>
-                        @endfor
+                        @endforeach
                     </div>
                 </div>
             </div>

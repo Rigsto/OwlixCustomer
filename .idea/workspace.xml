@@ -19,15 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5f24f96-cc71-4201-a2fd-14b5281bcce2" name="Default Changelist" comment="make data for cheeckout">
+    <list default="true" id="c5f24f96-cc71-4201-a2fd-14b5281bcce2" name="Default Changelist" comment="ordering system working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Base/BaseOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Base/BaseOrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Order/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Order/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Order/CheckOutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Order/CheckOutController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/order/cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/order/cart.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/order/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/order/checkout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/order/order_success.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/order/order_success.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Home/StoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Home/StoreController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customer/orders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/orders.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/store/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/store/detail.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,7 +231,8 @@
       <workItem from="1610078342009" duration="4143000" />
       <workItem from="1611762935139" duration="6710000" />
       <workItem from="1611810769852" duration="16632000" />
-      <workItem from="1612005410328" duration="38038000" />
+      <workItem from="1612005410328" duration="40212000" />
+      <workItem from="1612162284614" duration="1879000" />
     </task>
     <task id="LOCAL-00001" summary="login view done">
       <created>1608742477906</created>
@@ -391,7 +388,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612040982555</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="ordering system working">
+      <created>1612118155938</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1612118155938</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -433,7 +437,8 @@
     <MESSAGE value="change many things" />
     <MESSAGE value="wishlist working, change system database, many bug fixes" />
     <MESSAGE value="make data for cheeckout" />
-    <option name="LAST_COMMIT_MESSAGE" value="make data for cheeckout" />
+    <MESSAGE value="ordering system working" />
+    <option name="LAST_COMMIT_MESSAGE" value="ordering system working" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
