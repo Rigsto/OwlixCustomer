@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Customer\OrderController;
 use App\Http\Controllers\Customer\ProfileController;
@@ -66,6 +67,11 @@ Route::group(
         Route::get('profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
 
+        Route::post('address', [ProfileController::class, 'store'])->name('profile.address.store');
+        Route::get('address/{id}/default', [ProfileController::class, 'setDefault'])->name('profile.address.default');
+        Route::patch('address/{id}', [ProfileController::class, 'updateAddress'])->name('profile.address.update');
+        Route::delete('address/{id}', [ProfileController::class, 'deleteAddress'])->name('profile.address.delete');
+
         Route::get('orders', [OrderController::class, 'index'])->name('order');
         Route::get('order/items', [OrderController::class, 'show'])->name('order.items');
 
@@ -75,4 +81,9 @@ Route::group(
     }
 );
 
-
+Route::group(
+    ['as' => 'ajax.', 'prefix'=>'ajax'],
+    function (){
+        Route::get('province/cities', [AjaxController::class, 'getCityByProvinceId'])->name('province.cities');
+    }
+);

@@ -124,8 +124,7 @@
                                 <div class="col-sm-8">
                                     <p id="OrderInvoiceNumber" class="font-weight-bold text-primary">{{ $item['external_id'] }}</p>
                                     <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->setTimezone('Asia/Jakarta')->toDateTimeString() }}</p>
-                                    <p class="mt-1" style="font-weight: 500;">Hendy Shop | {{ count($item['order_items']) }} Barang <span><a
-                                                href="">Lihat</a></span></p>
+                                    <p class="mt-1" style="font-weight: 500;">Hendy Shop |  }} Barang <span><a href="">Lihat</a></span></p>
                                 </div>
                                 <div class="col-sm-4">
                                     <p class="font-weight-bold text-success"><i class="fas fa-clipboard-check mr-2"></i>TERKIRIM</p>

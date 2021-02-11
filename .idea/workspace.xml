@@ -19,11 +19,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5f24f96-cc71-4201-a2fd-14b5281bcce2" name="Default Changelist" comment="ordering system working">
+    <list default="true" id="c5f24f96-cc71-4201-a2fd-14b5281bcce2" name="Default Changelist" comment="change some order design">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AjaxController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/inc/options_list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/ProfileController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Home/StoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Home/StoreController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/OwlixApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/OwlixApi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/_components.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/_components.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/customer/orders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/orders.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customer/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/store/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/store/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,7 +239,9 @@
       <workItem from="1611762935139" duration="6710000" />
       <workItem from="1611810769852" duration="16632000" />
       <workItem from="1612005410328" duration="40212000" />
-      <workItem from="1612162284614" duration="1879000" />
+      <workItem from="1612162284614" duration="3226000" />
+      <workItem from="1612251003568" duration="15525000" />
+      <workItem from="1612357694151" duration="760000" />
     </task>
     <task id="LOCAL-00001" summary="login view done">
       <created>1608742477906</created>
@@ -395,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612118155938</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="change some order design">
+      <created>1612177979669</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1612177979669</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -438,7 +454,8 @@
     <MESSAGE value="wishlist working, change system database, many bug fixes" />
     <MESSAGE value="make data for cheeckout" />
     <MESSAGE value="ordering system working" />
-    <option name="LAST_COMMIT_MESSAGE" value="ordering system working" />
+    <MESSAGE value="change some order design" />
+    <option name="LAST_COMMIT_MESSAGE" value="change some order design" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -8,10 +8,11 @@
 @endsection
 @section('content')
     <div class="container" id="profileSections">
+        @include('inc.alert')
         <div class="card px-5 py-5 mx-5 mt-5 rounded-medium">
             <div class="d-flex justify-content-lg-between">
                 <div class="d-flex">
-                    <div style="background-image: url('{{ asset("img/shopOwner.png") }}');" class="ProfilePicture"></div>
+                    <div style="background-image: url('{{ $profile['image'] ?? asset("img/shopOwner.png") }}');" class="ProfilePicture"></div>
                     <div class="mx-3">
                         <h4 id="UserProfileName">{{ $profile['name'] }}</h4>
                         <p class="text-primary my-0">{{ $profile['email'] }}</p>
@@ -59,18 +60,93 @@
                                         <p class="text-muted mb-0">{{ $add['address'] }}</p>
                                         <p class="text-muted mb-0">{{ $city->name }} {{ $add['postal_code'] }}, {{ $province->name }}</p>
                                     </td>
-                                    <td>
-                                        <a href="" class="btn btn-circle btn-light" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                        <a href="" class="btn btn-circle btn-light" title="Delete"><i class="fa fa-times"></i></a>
+                                    <td class="text-right">
+                                        @if($add['id'] == $profile['id_default_address'])
+                                            <button class="btn btn-success" style="cursor: none; pointer-events: none"><i class="fa fa-check"></i> Set as Default Address</button>
+                                        @else
+                                            <a href="{{ route('customer.profile.address.default', $add['id']) }}" class="btn btn-light" title="Set Default"><i class="fa fa-check"></i> Set as Default Address</a>
+                                        @endif
+
+                                        <a href="" class="btn btn-light" title="Edit"><i class="fas fa-pencil-alt"></i> Edit</a>
+
+                                        @if($add['id'] == $profile['id_default_address'])
+                                            <button disabled class="btn btn-light" title="Cannot delete default address"><i class="fa fa-trash"></i> Delete</button>
+                                        @else
+                                            <a href="{{ route('customer.profile.address.delete', $add['id']) }}" class="btn btn-light" title="Delete" onclick="event.preventDefault(); document.getElementById('deleteAddress').submit();"><i class="fa fa-trash"></i> Delete</a>
+                                            <form action="{{ route('customer.profile.address.delete', $add['id']) }}" id="deleteAddress" class="d-none" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="DELETE">
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
                     @endforeach
-
+                    <a class="btn btn-warning text-primary" data-toggle="collapse" href="#collapseAddress" role="button" aria-expanded="false" aria-controls="collapseAddress">Tambah Alamat</a>
+                    <div class="collapse" id="collapseAddress">
+                        <div class="card px-4 py-4 my-4 rounded-medium">
+                            <form action="{{ route('customer.profile.address.store') }}" method="POST">
+                                @csrf
+                                {!! Form::hidden('hasDefaultAddress', $profile['id_default_address']) !!}
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        {!! Form::label('name', 'Nama') !!}
+                                        {!! Form::text('name', null, ['class'=>'form-control', 'required']) !!}
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        {!! Form::label('phone', 'No Telp') !!}
+                                        {!! Form::text('phone', null, ['class'=>'form-control', 'required']) !!}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {!! Form::label('address', 'Alamat') !!}
+                                    {!! Form::text('address', null, ['class'=>'form-control', 'required']) !!}
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        {!! Form::label('state', 'Provinsi') !!}
+                                        {!! Form::select('state', $provinces, null, ['class'=>'form-control custom-select', 'placeholder'=>'-- Pilih Provinsi --', 'required']) !!}
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        {!! Form::label('city', 'Kota') !!}
+                                        {!! Form::select('city', $cities, null, ['class'=>'form-control custom-select', 'placeholder'=>'-- Pilih Kota --', 'required']) !!}
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        {!! Form::label('zip', 'Kode Pos') !!}
+                                        {!! Form::text('zip', null, ['class'=>'form-control', 'id'=>'inputZip', 'required']) !!}
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary py-2 px-3 rounded w-100">Simpan</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function (){
+            $("select[name='state']").change(function (){
+                const province_id = $(this).val();
+
+                $.ajax({
+                    url: "{{ route('ajax.province.cities') }}",
+                    method: "GET",
+                    data: {
+                        id: province_id,
+                    },
+                    success: function (data){
+                        $("select[name='city']").html(data.options);
+                    },
+                    error: function (a,b,c){
+                        alert("Failed to get data");
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

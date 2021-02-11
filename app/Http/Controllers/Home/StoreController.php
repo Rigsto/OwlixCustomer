@@ -31,11 +31,12 @@ class StoreController extends Controller
         ])->getBody();
         $contentProduct = json_decode($responseProduct, true);
 
-        $totalSold = $this->countSold($contentProduct['data']['other_items']);
+        $totalSold = $this->countSold($contentProduct['data']['store_items']['data']);
 
         return view('store.detail', [
             'store' => $content['data'],
-            'products' => $contentProduct['data']['other_items'],
+            'products' => $contentProduct['data']['store_items']['data'],
+            'totalProduct' => $contentProduct['data']['store_items']['total'],
             'totalSold' => $totalSold,
         ]);
     }

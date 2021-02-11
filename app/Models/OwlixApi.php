@@ -37,6 +37,10 @@ class OwlixApi
         return $this->base_url."auth/facebook";
     }
 
+    public function update_profile(){
+        return $this->base_url."edit_profile";
+    }
+
     //--------------------------------------------------------------------------
     //store item
     public function read_store_item(){

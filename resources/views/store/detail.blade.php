@@ -41,7 +41,7 @@
                 <div class="product-list-header px-sm-3">
                     <div class="d-flex justify-content-between align-items-center">
                         <div><h2>Produk Toko</h2></div>
-                        <div><a href="http://">Lihat Semua</a></div>
+                        <div><a href="">Lihat Semua</a></div>
                     </div>
                     <div class="row product-grid py-sm-4">
                         @foreach($products as $data)

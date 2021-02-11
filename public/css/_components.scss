@@ -1,9 +1,9 @@
 
-  
+
 .rounded {
     border-radius: 0.3rem !important;
   }
-  
+
   .rounded-images {
     border-radius: .96rem;
   }
@@ -72,13 +72,13 @@
         transform: scale(1.05);
      box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
    }
-   
+
    .card{
     transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
    }
    .card h3{
      font-weight: 600;
-    
+
    }
     .card-img-top{
         object-fit: cover;
@@ -88,8 +88,8 @@
         font-weight: 600;
         font-size: 18px!important;
     }
-    
-   
+
+
 
     .product-price{
         p{
@@ -108,7 +108,7 @@
     }
 }
 #FilterDropdown {
-    .btn{ 
+    .btn{
         strong{
             font-weight: 500;
         }
@@ -120,7 +120,7 @@
     background-color: transparent;
 }
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) { 
+@media (min-width: 768px) {
     #LoginForm{
         background-color: white;
     }
@@ -161,10 +161,10 @@
         color: grey;
         border: hidden;
         th{
-           
+
             font-weight: 300!important;
         }
-       
+
     }
 
     tr{
@@ -192,11 +192,11 @@
 }
 
 .small-btn-primary:focus, .small-btn-secondary:focus{
-    outline: none;  
+    outline: none;
 }
 
 .small-btn-primary:hover{
-    background-color: #1a3071; 
+    background-color: #1a3071;
 }
 
 
@@ -271,7 +271,7 @@
     max-height: 72px;
      img{
          width: 100%;
-         height: 72px;  
+         height: 72px;
      }
 }
 
@@ -280,7 +280,7 @@
     height: 100%;
     max-height: 37px;
     max-width: 132px;
-   
+
     .step-desc-active{
         font-size: 14px;
         width: 100%;
@@ -397,8 +397,24 @@
 }
 
 .profileDropdownImg{
-    border: 1px solid black; 
-    border-radius: 30px; 
-    width: 30px; 
+    border: 1px solid black;
+    border-radius: 30px;
+    width: 30px;
     height: 30px;
+}
+
+//
+// Labels
+// --------------------------------------------------
+
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
 }
