@@ -57,6 +57,10 @@ class OwlixApi
         return $this->base_url."read_orders";
     }
 
+    public function rate_order(){
+        return $this->base_url."rate_order";
+    }
+
     //--------------------------------------------------------------------------
     //payment
     public function create_payment_with_ovo(){

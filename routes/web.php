@@ -74,6 +74,8 @@ Route::group(
 
         Route::get('orders', [OrderController::class, 'index'])->name('order');
         Route::get('order/items', [OrderController::class, 'show'])->name('order.items');
+        Route::get('order/rating', [OrderController::class, 'rating'])->name('order.rating');
+        Route::post('order/rating', [OrderController::class, 'giveRating'])->name('order.rating.give');
 
         Route::get('wishlist', [WishlistController::class, 'index'])->name('wishlist');
         Route::get('wishlist/{id}/{from}/add', [WishlistController::class, 'addWishlist'])->name('wishlist.add');

@@ -15,7 +15,7 @@ class ProductController extends BaseHomeController
         try {
             $client = new Client();
             $response = $client->get((new OwlixApi())->read_store_item())->getBody();
-            $content = json_decode($response, true)['data']['data'];
+            $content = json_decode($response, true)['data']['store_items']['data'];
 
         } catch (GuzzleException $e) {
             $content = [];
@@ -41,7 +41,7 @@ class ProductController extends BaseHomeController
 
         if ($cat == 0){
             $response = $client->get((new OwlixApi())->read_store_item())->getBody();
-            $content = json_decode($response, true)['data']['data'];
+            $content = json_decode($response, true)['data']['store_items']['data'];
 
             return view('home.product_list', [
                 'items' => $content,
@@ -56,7 +56,7 @@ class ProductController extends BaseHomeController
                     'id_item_category' => $cat
                 ]
             ])->getBody();
-            $content = json_decode($response, true)['data']['data'];
+            $content = json_decode($response, true)['data']['store_items']['data'];
 
             $categories = $this->readAllCategories();
 

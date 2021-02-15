@@ -28,41 +28,20 @@
                 <div class="tab-pane fade show active my-4" id="pills-belum-bayar" role="tabpanel"
                      aria-labelledby="pills-belum-bayar-tab">
                     @foreach ($orders_new as $item)
-                        <div class="card px-4 py-4 mb-4 rounded-medium">
+                        <div class="card px-4 py-4 mb-2 rounded-medium">
                             <div class="row align-items-center">
                                 <div class="col-sm-6">
                                     <p id="OrderInvoiceNumber"
                                        class="font-weight-bold text-primary">{{ $item['external_id'] }}</p>
                                     <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->setTimezone('Asia/Jakarta')->toDayDateTimeString() }}</p>
-                                    <p class="mt-1" style="font-weight: 500;">{{ count($item['order_items']) }} Barang | <span><a href="javascript: detail({{$item['id']}})">Lihat Barang</a></span></p>
-                                    <button class="btn btn-primary py-3 px-4 mt-4 rounded">Konfirmasi Pembayaran</button>
-                                </div>
-                                <div class="col-sm-6">
-                                    <table class="table table-striped">
-                                        <tbody>
-                                        <tr>
-                                            <td style="text-align: left;">Total</td>
-                                            <td style="text-align: right; font-size: 16px; font-weight: 500;">
-                                                Rp. {{ number_format($item['amount'] + $item['delivery_expense'], 0, "", ".")}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="text-align: left;">Metode Pembayaran</td>
-                                            <td style="text-align: right;">BCA</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="text-align: left;">Kode Virtual Account<br>
-                                                <h5>0213241241515815</h5>
-                                                <input type="text" value="0213241241515815" id="kodeVA" style="display: none;">
-                                            </td>
-                                            <td style="text-align: right;">
-                                                <button class="btn btn-light" onclick="copyCode()">Salin</button>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                    <p class="mt-1" style="font-weight: 500;">
+                                        {{ $item['order_items'][0]['store_item']['store']['name'] }} | {{ count($item['order_items']) }} Barang
+                                        <span>
+                                            <a href="javascript: detail({{$item['id']}})">Lihat</a>
+                                        </span>
+                                    </p>
                                 </div>
                             </div>
-
                         </div>
                     @endforeach
                 </div>
@@ -72,8 +51,8 @@
                             <div class="d-flex align-items-center">
                                 <div class="col-sm-6">
                                     <p id="OrderInvoiceNumber" class="font-weight-bold text-primary">{{ $item['external_id'] }}</p>
-                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->setTimezone('Asia/Jakarta')->toDayDateTimeString() }}</p>
-                                    <p class="mt-1" style="font-weight: 500;">{{ count($item['order_items']) }} Barang | <span><a href="javascript: detail({{$item['id']}})">Lihat Barang</a></span>
+                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['updated_at'])->setTimezone('Asia/Jakarta')->toDayDateTimeString() }}</p>
+                                    <p class="mt-1" style="font-weight: 500;">{{ $item['order_items'][0]['store_item']['store']['name'] }} | {{ count($item['order_items']) }} Barang <span><a href="javascript: detail({{$item['id']}})">Lihat</a></span></p>
                                 </div>
                                 <div class="col-sm-6">
                                     <p class="text-right font-weight-bold " style="color: #e8af12;">SEDANG DIKONFIRMASI KE TOKO</p>
@@ -84,18 +63,18 @@
                 </div>
                 <div class="tab-pane fade my-4" id="pills-dikirim" role="tabpanel" aria-labelledby="pills-dikirim-tab">
                     @foreach($orders_ship as $item)
-                        <div class="card px-4 py-4 rounded-medium" id="Transaction_detail_PaymentShipped">
+                        <div class="card px-4 py-4 mb-2 rounded-medium" id="Transaction_detail_PaymentShipped">
                             <div class="d-flex align-items-center">
                                 <div class="col-sm-8">
                                     <p id="OrderInvoiceNumber" class="font-weight-bold text-primary">{{ $item['external_id'] }}</p>
-                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->setTimezone('Asia/Jakarta')->toDateTimeString() }}</p>
-                                    <p class="mt-1" style="font-weight: 500;">{{ count($item['order_items']) }} Barang | <span><a href="javascript: detail({{$item['id']}})">Lihat Barang</a></span>
+                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['updated_at'])->setTimezone('Asia/Jakarta')->toDayDateTimeString() }}</p>
+                                    <p class="mt-1" style="font-weight: 500;">{{ $item['order_items'][0]['store_item']['store']['name'] }} | {{ count($item['order_items']) }} Barang <span><a href="javascript: detail({{$item['id']}})">Lihat</a></span></p>
                                 </div>
                                 <div class="col-sm-4">
                                     <p class="font-weight-bold " style="color:  #e8af12;"><i
                                             class="fas fa-shipping-fast mr-2"></i>SEDANG DIKIRIM</p>
-                                    <p class="text-muted mb-0">{{ $item['courier_service'] }}</p>
-                                    <p class="mt-1" style="font-weight: 500;"><span>Resi : 21415474523523</span></p>
+                                    <p class="mb-0 text-muted">Kurir</p>
+                                    <p class="mb-0" style="font-weight: 500;">{{ $item['courier_code'] }} {{ $item['courier_service'] }}</p>
                                 </div>
                             </div>
                         </div>
@@ -103,12 +82,12 @@
                 </div>
                 <div class="tab-pane fade my-4" id="pills-batal" role="tabpanel" aria-labelledby="pills-batal-tab">
                     @foreach($orders_reject as $item)
-                        <div class="card px-4 py-4 rounded-medium" id="Transaction_detail_PaymentRejected">
+                        <div class="card px-4 py-4 mb-2 rounded-medium" id="Transaction_detail_PaymentRejected">
                             <div class="d-flex align-items-center">
                                 <div class="col-sm-8">
                                     <p id="OrderInvoiceNumber" class="font-weight-bold text-primary">{{ $item['external_id'] }}</p>
-                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->setTimezone('Asia/Jakarta')->toDateTimeString() }}</p>
-                                    <p class="mt-1" style="font-weight: 500;">{{ count($item['order_items']) }} Barang | <span><a href="javascript: detail({{$item['id']}})">Lihat Barang</a></span>
+                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['updated_at'])->setTimezone('Asia/Jakarta')->toDayDateTimeString() }}</p>
+                                    <p class="mt-1" style="font-weight: 500;">{{ $item['order_items'][0]['store_item']['store']['name'] }} | {{ count($item['order_items']) }} Barang <span><a href="javascript: detail({{$item['id']}})">Lihat</a></span></p>
                                 </div>
                                 <div class="col-sm-4">
                                     <p class="font-weight-bold text-danger"><i class="fas fa-times mr-2"></i>DITOLAK</p>
@@ -119,17 +98,18 @@
                 </div>
                 <div class="tab-pane fade my-4" id="pills-selesai" role="tabpanel" aria-labelledby="pills-selesai-tab">
                     @foreach($orders_completed as $item)
-                        <div class="card px-4 py-4 rounded-medium" id="Transaction_detail_Reject">
+                        <div class="card px-4 py-4 mb-2 rounded-medium" id="Transaction_detail_Reject">
                             <div class="d-flex align-items-center">
                                 <div class="col-sm-8">
                                     <p id="OrderInvoiceNumber" class="font-weight-bold text-primary">{{ $item['external_id'] }}</p>
-                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['created_at'])->setTimezone('Asia/Jakarta')->toDateTimeString() }}</p>
-                                    <p class="mt-1" style="font-weight: 500;">Hendy Shop |  }} Barang <span><a href="">Lihat</a></span></p>
+                                    <p class="text-muted mb-0">{{ \Carbon\Carbon::parse($item['updated_at'])->setTimezone('Asia/Jakarta')->toDayDateTimeString() }}</p>
+                                    <p class="mt-1" style="font-weight: 500;">{{ $item['order_items'][0]['store_item']['store']['name'] }} | {{ count($item['order_items']) }} Barang <span><a href="javascript: detail({{$item['id']}})">Lihat</a></span></p>
                                 </div>
                                 <div class="col-sm-4">
                                     <p class="font-weight-bold text-success"><i class="fas fa-clipboard-check mr-2"></i>TERKIRIM</p>
-                                    <p class="text-muted mb-0">Diterima Pada:</p>
-                                    <p class="mt-1" style="font-weight: 500;"><span>09 Agustus 2020, 12:30</span></p>
+                                    @if(!$item['is_rated'])
+                                        <button class="btn btn-warning text-dark" onclick="rating({{$item['id']}})"><i class="fa fa-star"></i> Nilai Barang</button>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -149,6 +129,23 @@
         function detail(id_order){
             $.ajax({
                 url: "{{route('customer.order.items')}}",
+                method: "GET",
+                data: {
+                    id_order: id_order,
+                },
+                success: function (data) {
+                    $('#modalBody').html(data.modal);
+                    $('#modal').modal();
+                },
+                error: function (a, b, c) {
+                    alert('Failed to get data');
+                }
+            })
+        }
+
+        function rating(id_order){
+            $.ajax({
+                url: "{{route('customer.order.rating')}}",
                 method: "GET",
                 data: {
                     id_order: id_order,
