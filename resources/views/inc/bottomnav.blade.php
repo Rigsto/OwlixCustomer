@@ -26,7 +26,7 @@
                     Yuk mulai belanja di Owlix.
                 </p>
             </div>
-            <div class="col-md-3"><img src="{{ asset('img/Value4.svg') }}" alt="value1">
+            <div class="col-md-3"><img src="{{ asset('img/value4.svg') }}" alt="value1">
                 <h5>Berbagai Voucher Menarik</h5>
                 <p>Owlix memberikan berbagai voucher
                     menarik yang dijamin membuat
