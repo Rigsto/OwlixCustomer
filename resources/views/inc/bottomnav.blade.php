@@ -4,7 +4,7 @@
             <img src="{{ asset('img/bottomBanner.svg') }}" alt="banner" class="w-100 rounded-images">
         </div>
         <div class="row justify-content-between align-items-center py-3" style="text-align: center;">
-            <div class="col-md-3"><img src="{{ asset('img/value1.svg') }}" alt="value1">
+            <div class="col-md-3"><img src="{{ asset('img/Value1.svg') }}" alt="value1">
                 <h5>Harga bisa Diadu</h5>
                 <p>Temukan berbagai produk di Owlix
                     dengan harga terjangkau dan kualitas
