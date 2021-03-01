@@ -8,13 +8,20 @@
                         Kategori Produk
                     </div>
                     <ul class="list-group list-group-flush">
-                        <a href="{{ route('home.search.category', ['cat' => 0]) }}" class="py-1">
-                            <li class="list-group-item border-bottom">Semua Produk</li>
-                        </a>
-                        @foreach($categories as $cat)
-                            <a href="{{ route('home.search.category', ['cat' => $cat['id']]) }}" class="py-1">
-                                <li class="list-group-item border-bottom">{{ $cat['name'] }}</li>
-                            </a>
+                        <form action="{{ url()->previous() }}" method="GET">
+                            <button class="btn font-muted-dark text-left w-100 p-0" style="border:0px;">
+                                <li class="list-group-item border-bottom">Semua Produk</li>
+                            </button>
+                            <input type="hidden" name="current_page" value="1">
+                        </form>
+                        @foreach($categories as $idx => $cat)
+                            <form action="{{ url('products') }}" method="GET">
+                                <button class="btn font-muted-dark text-left w-100 p-0" style="border:0px;">
+                                    <li class="list-group-item border-bottom">{{ $cat['name'] }}</li>
+                                </button>
+                                <input type="hidden" name="category_id" value="{{ $cat['id'] }}">
+                                <input type="hidden" name="current_page" value="1">
+                            </form>
                         @endforeach
                     </ul>
                 </div>

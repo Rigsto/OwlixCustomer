@@ -14,10 +14,16 @@
                             <button class="btn font-muted-dark text-left w-100 p-0" style="border:0px;">
                                 <li class="@if(!isset($category_id)) bg-primary-alt @endif list-group-item border-bottom">Semua Produk</li>
                             </button>
-                            <input type="hidden" name="product_name" value="{{ $search_query }}">
                             <input type="hidden" name="current_page" value="{{ $current_page }}">
                         </form>
                         @foreach($categories as $idx => $cat)
+                            @isset($category_id)
+                            @if($category_id == $cat['id'])
+                                @php
+                                    $category_name = $cat["name"]
+                                @endphp
+                            @endif
+                            @endisset
                             <form action="{{ url('products') }}" method="GET">
                                 <button class="btn font-muted-dark text-left w-100 p-0" style="border:0px;">
                                     <li class="@isset($category_id) @if($category_id == $cat['id']) bg-primary-alt @endif @endisset list-group-item border-bottom">{{ $cat['name'] }}</li>
@@ -32,7 +38,7 @@
             </div>
             <div class="col-9">
                 <div class="d-flex my-4 justify-content-between">
-                    <h5 class="font-muted font-semiBold m-0">Hasil pencarian untuk <span class="font-primary">'{{ $search_query }}'</span></h5>
+                    <h5 class="font-muted font-semiBold m-0">Hasil pencarian untuk <span class="font-primary">@if(isset($category_id) && !isset($search_query)) {{ $category_name }} @elseif(!isset($category_id) && !isset($search_query)) Semua Produk @else '{{ $search_query }}' @endif</span></h5>
                     <div class="d-flex">
                         <h5 class="font-muted mr-3 mb-0">{{ $current_page }}/@if($total_page > 0){{ $total_page }}@else{{1}}@endif</h5>
                         <div class="d-flex">
