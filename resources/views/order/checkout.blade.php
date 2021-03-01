@@ -14,14 +14,14 @@
                         <div>
                             <h4>Detail Pengiriman</h4>
                         </div>
-                        <div class="my-4">
+                        <div class="my-2">
                             <p class="d-none" id="withAddress">@if($address != null) {{ count($datas) }} @else 0 @endif</p>
                             @if($address != null)
                                 @php
                                     $city = \App\Models\AddressCity::find($address['city_id']);
                                     $province = \App\Models\AddressProvince::find($address['province_id']);
                                 @endphp
-                                <div class="row detailAlamatPenerimaShow mb-2">
+                                <div class="row detailAlamatPenerimaShow mb-3">
                                     <div class="col-lg-6 col-md-12">
                                         <p class="text-muted">Alamat Pengiriman</p>
                                         <p>{{ $address['address'] }}, {{ $city->name }} {{ $address['postal_code'] }}, {{ $province->name }}</p>
@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-12">
-                                        <a href="" style="color: #223b85;">Ubah Alamat</a>
+                                        <a class="font-primary font-bold" href="" style="color: #223b85;">Ubah Alamat</a>
                                     </div>
                                 </div>
                             @else
@@ -118,8 +118,8 @@
                         <div class="amountDetail px-3 py-3">
                             <div class="d-flex justify-content-between align-items-center">
                                 <p class="text-muted">Subtotal :</p>
-                                <p class="d-none" id="totalHarga">{{$total}}</p>
-                                <p>Rp {{ number_format($total, 0, "". ".") }}</p>
+                                <p class="d-none" id="totalHarga">{{ $total }}</p>
+                                <p>Rp {{ number_format($total, 0, "", ".") }}</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-3">
                                 <p class="text-muted">Diskon :</p>

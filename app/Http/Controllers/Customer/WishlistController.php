@@ -16,9 +16,10 @@ class WishlistController extends Controller
             ],
         ])->getBody();
         $content = json_decode($response, true);
+        // echo json_encode($content);
 
         return view('customer.wishlist', [
-            'datas' => $content['data']
+            'datas' => $content['data']['data']
         ]);
     }
 

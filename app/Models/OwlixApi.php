@@ -152,4 +152,11 @@ class OwlixApi
     public function read_ongkir(){
         return $this->base_url."read_ongkir";
     }
+
+    //--------------------------------------------------------------------------
+    //review
+    public function read_review(){
+        return $this->base_url."read_rating";
+    }
+
 }

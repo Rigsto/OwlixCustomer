@@ -18,6 +18,7 @@ Route::group(
     ['namespace' => 'Home', 'as' => 'home.'],
     function(){
         Route::get('/', [ProductController::class, 'homePage'])->name('home');
+        Route::get('/products', [ProductController::class, 'get_all_product'])->name('products');
 
         Route::get('category/{cat}', [ProductController::class, 'searchCategory'])->name('search.category');
         Route::get('search/{name}', [ProductController::class, 'searchName'])->name('search.name');

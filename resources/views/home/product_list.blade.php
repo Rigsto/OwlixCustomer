@@ -1,8 +1,7 @@
 @extends('inc.app')
 @section('content')
-    @include('inc.filter')
     <div class="container">
-        <div class="row py-md-4">
+        <div class="row py-md-5">
             <div class="col-md-3">
                 <div class="card" id="kategori" style="width: 17rem">
                     <div class="card-header">
@@ -22,14 +21,18 @@
             </div>
             <div class="col-md-9">
                 @if($is_home)
-                    <div class="d-flex" style="padding-bottom: 2em">
-                        <div class="ml-sm-3">
+                    <div class="row mb-3 px-3">
+                        <div class="col-4">
                             <a href="" class="kategori-btn">
                                 <img src="{{ asset('img/KebutuhanRT.svg') }}" alt="" class="rounded-images mw-100">
                             </a>
+                        </div>
+                        <div class="col-4">
                             <a href="" class="kategori-btn">
                                 <img src="{{ asset('img/Pakaian.svg') }}" alt="" class="rounded-images mw-100">
                             </a>
+                        </div>
+                        <div class="col-4">
                             <a href="" class="kategori-btn">
                                 <img src="{{ asset('img/KebutuhanSekolah.svg') }}" alt="" class="rounded-images mw-100">
                             </a>
@@ -38,8 +41,8 @@
                 @endif
                 <div class="product-list-header px-sm-3">
                     <div class="d-flex justify-content-between align-items center">
-                        <h2>{{ $title }}</h2>
-                        <a href="">Lihat Semua</a>
+                        <h2 class="font-bold mb-0">Best Sellers</h2>
+                        <a class="my-auto font-primary font-bold" href="">Lihat Semua</a>
                     </div>
                     <div class="row product-grid py-sm-4">
                         @foreach($items as $data)
@@ -56,9 +59,8 @@
                                                 @include('inc.star_rating', ['star_count'=> floor($data['rating']) ?? 0, 'rating_count'=>$data['rating_count']])
                                             </div>
                                             <div
-                                                class="product-price pt-4 d-flex justify-content-between align-items-end">
-                                                <h5>
-                                                    Rp {{ number_format($data['store_item_price'], 0, ',', '.') }}</h5>
+                                                class="product-price pt-3 d-flex justify-content-between align-items-end">
+                                                <h5 class="font-bold">Rp {{ number_format($data['store_item_price'], 0, ',', '.') }}</h5>
                                             </div>
                                         </div>
                                     </div>

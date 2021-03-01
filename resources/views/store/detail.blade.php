@@ -41,16 +41,18 @@
                 <div class="product-list-header px-sm-3">
                     <div class="d-flex justify-content-between align-items-center">
                         <div><h2>Produk Toko</h2></div>
-                        <div><a href="">Lihat Semua</a></div>
+                        <a href="" class="font-primary font-bold my-auto">Lihat Semua</a>
                     </div>
                     <div class="row product-grid py-sm-4">
                         @foreach($products as $data)
-                            <div class="col-4 px-3 py-3">
+                            <div class="col-3 px-3 py-3">
                                 <a href="{{ route('home.item.detail', ['id' => $data['id']]) }}">
                                     <div class="card">
-                                        <img class="card-img-top" style="height: 12rem;"
-{{--                                             src="{{$data['store_item_images'][0]['image_url']}}"--}}
-                                             alt="Card image cap">
+                                        <div class="p-2">
+                                            <div class="square-image">
+                                                <img src="{{ $data["store_item_images"][0]["image_url"] }}" alt="">
+                                            </div>
+                                        </div>
                                         <div class="card-body">
                                             <p class="card-text text-muted" style="font-size: 12px;">{{$store['name']}}</p>
                                             <h4 class="card-title">{{$data['name']}}</h4>

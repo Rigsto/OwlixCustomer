@@ -35,7 +35,7 @@
                 <div class="form-group"><input class="form-control form-control-lg" type="password" placeholder="Password" name="password" required/></div>
                 <input type="submit" class="btn btn-lg btn-primary btn-block" value="Login">
             </form>
-            <div class="small mt-6"><a class="weight-500 action-link" href="{{ route('auth.showRegister') }}"><span>or Register Here</span></a></div>
+            <div class="small mt-6"><a class="weight-500 action-link font-primary" href="{{ route('auth.showRegister') }}"><span>or Register Here</span></a></div>
         </div>
     </div>
 </div>

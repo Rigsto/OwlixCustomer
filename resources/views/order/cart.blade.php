@@ -26,7 +26,7 @@
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="productThumbnail">
-                                                <img src="{{ $item->item()['store_item_images'][0]['image_url'] ?? asset('img/accountlogo.png') }}" alt="{{ $item->name }} picture">
+                                                <img src="{{ $item->item()['store_item_images'][0]['image_url'] ?? asset('img/accountlogo.png') }}" alt="{{ $item->name }} picture" style="object-fit: cover">
                                             </div>
                                             <div class="ml-3">
                                                 <h5 class="truncate"><a href="{{ route('home.item.detail', $item->store_item_id) }}">{{ $item->item()['name'] }}</a></h5>

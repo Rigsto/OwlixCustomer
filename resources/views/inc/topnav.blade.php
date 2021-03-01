@@ -1,12 +1,14 @@
 <nav class="navbar navbar-expand-sm navbar-light px-lg-5">
     <a class="navbar-brand" href="{{ route('home.home') }}"><img src="{{ asset('img/logo.svg') }}" alt="logo"></a>
     <div class="scollapse navbar-collapse" id="collapsibleNavId">
-        <form class="input-group md-form form-sm form-4 px-4 mx-lg-4 mt-2 search-bar">
-            <input class="form-control w-50 my-0 py-1 red-border" type="text"
+        <form class="input-group md-form form-sm form-4 px-4 mx-lg-4 mt-2 search-bar" action="{{ url('/products') }}" method="GET">
+            <input class="form-control w-50 my-0 py-1 red-border" type="text" name="product_name" value="@isset($search_query){{ $search_query }}@endisset"
                    style="background-color: transparent;" placeholder="Search" aria-label="Search">
-            <button class="input-group-append btn btn-secondary align-items-center" type="button">
+            <input type="hidden" name="current_page" value="1">
+            <button class="input-group-append btn btn-secondary align-items-center">
                 <i class="fa fa-search text-grey mx-1"></i>
             </button>
+            
         </form>
         <ul class="navbar-nav mt-2 mt-lg-0 align-items-center">
             @if($order ?? true)
@@ -21,6 +23,9 @@
                         @if(\Illuminate\Support\Facades\Auth::user()->order)
                             <div class="itemsDot rounded-circle bg-warning position-absolute ml-4"
                                  style="width: 1em; height: 1em;">
+                                 <div class="d-flex w-100 h-100">
+                                     <span class="m-auto font-bold font-black" style="font-size:10px; line-height:0">{{ count(\Illuminate\Support\Facades\Auth::user()->order->items) }}</span>
+                                 </div>
                             </div>
                         @endif
                     @endif
@@ -58,7 +63,7 @@
                         </div>
                     </div>
                 @else
-                    <a href="{{ route('auth.showLogin') }}" class="btn-primary px-4 py-2 rounded" style="text-decoration: none">Login</a>
+                    <a href="{{ route('auth.showLogin') }}" class="btn-primary px-4 py-2 font-white rounded" style="text-decoration: none">Login</a>
                 @endif
             </li>
         </ul>

@@ -27,7 +27,6 @@ class CourierInfoSeeder extends Seeder
         $ci->service = "YES";
         $ci->save();
 
-
         $ci = new CourierInfo();
         $ci->name = "Pos Indonesia Paket Kilat Khusus";
         $ci->code = "POS";

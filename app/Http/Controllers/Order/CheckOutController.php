@@ -12,6 +12,7 @@ class CheckOutController extends BaseOrderController
 {
     public function index(){
         $address = $this->getAddress();
+
         return view('order.checkout', [
             'order' => false,
             'order_process' => 2,
@@ -22,6 +23,7 @@ class CheckOutController extends BaseOrderController
 
     public function checkout(Request $request){
         $done = $this->orderAll($request);
+        echo "DONE".$done;
         if ($done){
             $this->deleteOrder();
         }

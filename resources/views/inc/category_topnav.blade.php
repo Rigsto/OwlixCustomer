@@ -3,9 +3,9 @@
         <div class="d-flex align-items-center">
             <a href="{{ route('home.home') }}">Home</a>
             <p class="mb-0 px-2"> / </p>
-            <a href="{{ route('home.search.category', $category_id) }}">{{ $category_name }}</a>
+            <a class="font-primary" href="{{ route('home.search.category', $category_id) }}">{{ $category_name }}</a>
             <p class="mb-0 px-2"> / </p>
-            <p class="mb-0">{{ $data['name'] }}</p>
+            <p class="mb-0">{{ $data->name }}</p>
         </div>
     </div>
 </section>

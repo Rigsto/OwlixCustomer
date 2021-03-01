@@ -418,3 +418,86 @@
     vertical-align: baseline;
     border-radius: .25em;
 }
+
+// ROUNDED IMAGE
+.square-image{
+    position: relative;
+    padding-top: 100%;
+
+    img{
+        position: absolute;
+        height: 100%;
+        width:100%;
+        object-fit:cover;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+    }
+}
+
+// FONT WEIGHT
+.font-regular {
+    font-weight: normal;
+}
+
+.font-medium {
+    font-weight: 600;
+}
+
+.font-semiBold {
+    font-weight: 600;
+}
+
+.font-bold {
+    font-weight: bold!important;
+}
+
+// LINK
+a{
+    color: black!important;
+    &:hover{
+        text-decoration: none;
+    }
+}
+
+// COLOR
+.font-primary{
+    color: #2B4596!important;
+}
+
+.font-muted{
+    color: rgba(127, 131, 148, 1);
+}
+
+.font-muted-dark{
+    color: rgba(88, 87, 87, 1);
+}
+
+.font-white{
+    color: white !important;
+}
+
+@media (min-width: 992px){
+    .container {
+        max-width: 1000px !important;
+    }
+}
+
+@media (min-width: 1200px){
+    .container {
+        max-width: 1350px !important;
+    }
+}
+
+// BACKGROUND
+.bg-primary-alt{
+    background-color: rgba(84, 126, 255, 0.24);
+}
+
+.list-group:last-child .list-group-item:last-child{
+    border-bottom-right-radius: 0rem !important;
+    border-bottom-left-radius: 0rem !important;
+}
+
+

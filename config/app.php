@@ -227,6 +227,11 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        // CUSTOM ALIASES
+        'Helper' => App\Helper\DateFormatter::class,
+        'Helper' => App\Helper\Helper::class,
+        'NetworkStatus' => App\Constants\NetworkStatus::class,
+        'Network' => App\Constants\Network::class,
     ],
 
 ];

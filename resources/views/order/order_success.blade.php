@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div>
-                <a href="{{ route('customer.order') }}" class="btn btn-primary py-3 px-4 mt-4 rounded">Cek Status Pesanan</a>
+                <a href="{{ route('customer.order') }}" class="btn btn-primary py-3 px-4 mt-4 text-white rounded">Cek Status Pesanan</a>
             </div>
         </div>
     </div>

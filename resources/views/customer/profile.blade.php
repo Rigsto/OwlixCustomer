@@ -20,14 +20,14 @@
                     </div>
                 </div>
                 <div style="max-width: 138px;">
-                    <div>
-                        <a href="{{ route('customer.profile.edit') }}" class="small-btn-primary px-3 py-2 w-100">
+                    <div class="small-btn-primary px-3 py-2 mb-2">
+                        <a href="{{ route('customer.profile.edit') }}" class="w-100" style="color: white!important">
                             <i class="fas fa-pen mr-2"></i>
                             Edit Profil
                         </a>
                     </div>
-                    <div class="mt-3">
-                        <a href="https://api.whatsapp.com/send?phone=15551234567" class="small-btn-secondary px-3 py-2 w-100">
+                    <div class="small-btn-secondary px-3 py-2">
+                        <a href="https://api.whatsapp.com/send?phone=15551234567" class="font-primary w-100">
                             <i class="fas fa-comment-dots mr-2"></i>Bantuan
                         </a>
                     </div>
